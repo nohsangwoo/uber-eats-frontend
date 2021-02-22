@@ -10,6 +10,7 @@ import { Search } from '../pages/client/search';
 import { Category } from '../pages/client/category';
 import { Restaurant } from '../pages/client/restaurant';
 import { MyRestaurants } from '../pages/owner/my-restaurants';
+import { AddRestaurant } from '../pages/owner/add-restaurants';
 // switch는 하나의 route만 인식해서 변수처럼 component를 설정해줌
 // key는 일종의 규칙임 array반환 형식으로 route를구성 한경우 key를 입력해줘야함
 const clientRoutes = [
@@ -37,7 +38,10 @@ const commonRoutes = [
   { path: '/edit-profile', component: <EditProfile /> },
 ];
 
-const restaurantRoutes = [{ path: '/', component: <MyRestaurants /> }];
+const restaurantRoutes = [
+  { path: '/', component: <MyRestaurants /> },
+  { path: '/add-restaurant', component: <AddRestaurant /> },
+];
 
 // ME_QUERY는 front-end에서 호출하기위한용도
 // gql은 front-end와 backend를 연결해주는 apollographql 도구
@@ -64,13 +68,13 @@ export const LoggedInRouter = () => {
       <Switch>
         {data.me.role === 'Client' &&
           clientRoutes.map(route => (
-            <Route key={route.path} path={route.path}>
+            <Route exact key={route.path} path={route.path}>
               {route.component}
             </Route>
           ))}
         {data.me.role === 'Owner' &&
           restaurantRoutes.map(route => (
-            <Route key={route.path} path={route.path}>
+            <Route exact key={route.path} path={route.path}>
               {route.component}
             </Route>
           ))}

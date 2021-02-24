@@ -821,3 +821,7 @@ Access to localstorage on cypress
 
 - owner가 restaurant를 불러올때 메뉴도 같이 불러온다
 - create menu 기능 만들기
+
+# 20.9 Create Dish part Two
+
+- create dish 마무리

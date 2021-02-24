@@ -45,6 +45,7 @@ const restaurantRoutes = [
   { path: '/add-restaurant', component: <AddRestaurant /> },
   { path: '/restaurants/:id', component: <MyRestaurant /> },
   { path: '/restaurants/:id/add-dish', component: <AddDish /> },
+  { path: '/restaurants/:restaurantId/add-dish', component: <AddDish /> },
 ];
 
 // ME_QUERY는 front-end에서 호출하기위한용도

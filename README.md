@@ -753,3 +753,66 @@ Access to localstorage on cypress
 - 새로운 router컨트롤 패턴
 
 # 20.1 Create Restaurant part One
+
+# 20.2 File Upload part One
+
+- file upload on nestjs way
+  https://docs.nestjs.com/techniques/file-upload 참고
+  이것은 multer와 연계하여 사용됨
+  https://www.npmjs.com/package/multer 참고
+
+# 20.5 Cache Optimization part One
+
+- 음식점을 생성하고 이전 페이지로 돌아가면 음식점은 DB상에 추가됐지만
+  클라이언트상의 캐쉬에는 업데이트 되지 않은 상태이니깐
+  수동으로 음식점 생성 작업 이후 클라이언트쪽의 캐쉬에 업데이트된 음식점 정보를 업데이트 해줌
+- 또는 regetchQueries 옵션을 이용한다.
+  (mutation 작업이후 쿼리를 다시 불러와서 클라이언트상의 캐쉬를 업데이트 하는방법)
+  (하지만 이 작업은 DB를 한번 더 건드는 작업이기에 앱의 사용량이 높으면 높을수록 DB에 걸리는 부하가 많음)
+  또한 오버페칭의 문제도 있음
+
+```예시
+ const [createRestaurantMutation, { data }] = useMutation<
+    createRestaurant,
+    createRestaurantVariables
+  >(CREATE_RESTAURANT_MUTATION, {
+    onCompleted,
+    // refetchQueries: 이걸로 작업하면 자동으로 MY_RESTAURANTS_QUERY를 실행하여 클라이언트의 캐쉬를 업데이트 해준다
+    <!-- MY_RESTAURANTS_QUERY: 클라이언트쪽 캐쉬를 업데이트할 쿼리 내용  -->
+    refetchQueries: [{ query: MY_RESTAURANTS_QUERY }],
+  });
+```
+
+- writeQuery 사용법
+  https://www.apollographql.com/docs/react/caching/cache-interaction/ 참고
+
+```
+ const client = useApolloClient();
+  useEffect(() => {
+    setTimeout(() => {
+      // 이전에 저장된 쿼리 캐쉬를 읽어오는 것
+      const queryResult = client.readQuery({ query: MY_RESTAURANTS_QUERY });
+      console.log(queryResult);
+
+      // 그리고 캐쉬를 오버라이딩 해줌
+      client.writeQuery({
+        query: MY_RESTAURANTS_QUERY,
+        data: {
+          // 이전에 존재했던 쿼리를 먼저spread하고
+          // 그다음 새로 업데이트한 쿼리 내용을 덮어씌움
+          ...queryResult,
+          restaurants: [1, 2, 3, 4],
+        },
+      });
+    }, 8000);
+  }, []);
+```
+
+# 20.6 Cache Optimization part Two
+
+- 20.5는 되는지 테스트 20.6은 실제 적용
+
+# 20.7 Restaurant Dashboard part One
+
+- Owner가 자신의 레스토랑중 하나를 클릭했을때
+  클릭한 레스토랑정보를 불러오는 쿼리와함께 이동하는 route생성

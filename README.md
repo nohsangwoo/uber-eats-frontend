@@ -816,3 +816,8 @@ Access to localstorage on cypress
 
 - Owner가 자신의 레스토랑중 하나를 클릭했을때
   클릭한 레스토랑정보를 불러오는 쿼리와함께 이동하는 route생성
+
+# 20.8 Create Dish part One
+
+- owner가 restaurant를 불러올때 메뉴도 같이 불러온다
+- create menu 기능 만들기

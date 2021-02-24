@@ -825,3 +825,17 @@ Access to localstorage on cypress
 # 20.9 Create Dish part Two
 
 - create dish 마무리
+
+# 20.10
+
+- input의 개수를 늘리거나 줄이는 동적 제어를 할때 input제어방법
+  https://react-hook-form.com/api#setValue 참고
+
+```예시
+    // 제어하고 싶은 대상(input의 name)을 첫번째 인자로
+    // 두번째 인자는 어떤 상태로 만들것인지? 여기선 ""상태로  빈값을 돌려줘서 삭제함
+    setValue(`${idToDelete}-optionName`, '');
+    // @ts-ignore
+    setValue(`${idToDelete}-optionExtra`, '');
+
+```

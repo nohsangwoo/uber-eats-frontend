@@ -843,3 +843,7 @@ Access to localstorage on cypress
 # 20.11 DishOptions part Two
 
 - 매번 add option을 클릭할 때마다, option들은 array가 되도록 함
+
+# 20.12 Dish Component
+
+생성된 메뉴를 뽑아와서 프론트에 뿌려줌

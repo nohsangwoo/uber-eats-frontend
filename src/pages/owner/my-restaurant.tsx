@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useParams } from 'react-router-dom';
+import { Dish } from '../../components/dish';
 import { DISH_FRAGMENT, RESTAURANT_FRAGMENT } from '../../fragments';
 import {
   myRestaurant,
@@ -32,7 +33,6 @@ interface IParams {
 
 export const MyRestaurant = () => {
   const { id } = useParams<IParams>();
-  console.log('id확인', id);
   const { data } = useQuery<myRestaurant, myRestaurantVariables>(
     MY_RESTAURANT_QUERY,
     {
@@ -43,7 +43,7 @@ export const MyRestaurant = () => {
       },
     }
   );
-  // console.log(data);
+  console.log(data);
   return (
     <div>
       <Helmet>
@@ -73,7 +73,17 @@ export const MyRestaurant = () => {
         <div className="mt-10">
           {data?.myRestaurant.restaurant?.menu.length === 0 ? (
             <h4 className="text-xl mb-5">Please upload a dish!</h4>
-          ) : null}
+          ) : (
+            <div className="grid mt-16 md:grid-cols-3 gap-x-5 gap-y-10">
+              {data?.myRestaurant.restaurant?.menu.map(dish => (
+                <Dish
+                  name={dish.name}
+                  description={dish.description}
+                  price={dish.price}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -847,3 +847,9 @@ Access to localstorage on cypress
 # 20.12 Dish Component
 
 생성된 메뉴를 뽑아와서 프론트에 뿌려줌
+
+# 20.13 Victory Charts part One
+
+- reactjs 에서 cahart 생성하는 쉬운 방법(Victory 사용법)
+
+https://formidable.com/open-source/victory/ 참고

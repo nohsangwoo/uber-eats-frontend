@@ -33,8 +33,6 @@ interface IForm {
 
 export const AddDish = () => {
   const { id: restaurantId } = useParams<IParams>();
-
-  console.log('params 확인', restaurantId);
   const history = useHistory();
   const [createDishMutation, { loading }] = useMutation<
     createDish,

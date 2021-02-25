@@ -20,17 +20,21 @@ const CREATE_DISH_MUTATION = gql`
 `;
 
 interface IParams {
-  restaurantId: string;
+  id: string;
 }
 
 interface IForm {
   name: string;
   price: string;
   description: string;
+  // 어떤값이든 extra형식으로 받을수있게 typescript에서 escape하는 방법
+  [key: string]: string;
 }
 
 export const AddDish = () => {
-  const { restaurantId } = useParams<IParams>();
+  const { id: restaurantId } = useParams<IParams>();
+
+  console.log('params 확인', restaurantId);
   const history = useHistory();
   const [createDishMutation, { loading }] = useMutation<
     createDish,
@@ -59,31 +63,45 @@ export const AddDish = () => {
   });
   const onSubmit = () => {
     const { name, price, description, ...rest } = getValues();
-    console.log(rest);
-    /* createDishMutation({
-      variables: {
-        input: {
-          name,
-          price: +price,
-          description,
-          restaurantId: +restaurantId,
-        },
+    // dish의 options에는 name과 extra가 배열 오브젝트로 존재하니 해당 형식에 맞춰 배열 오브젝트를 생성해줌
+
+    const optionObjects = optionsNumber.map(theId => ({
+      name: rest[`${theId}-optionName`],
+      extra: +rest[`${theId}-optionExtra`],
+    }));
+
+    const variables = {
+      input: {
+        name,
+        price: +price,
+        description,
+        restaurantId: +restaurantId,
+        options: optionObjects,
       },
-     }); */
-    // history.goBack();
+    };
+
+    createDishMutation({
+      variables: variables,
+    });
+    history.goBack();
   };
-  const [optionsNumber, setOptionsNumber] = useState(0);
+  // useState의 type은 숫자 배열 형식ex [0,1,2....]
+  const [optionsNumber, setOptionsNumber] = useState<number[]>([]);
+  // 옵션 추가버튼 클릭시 작동
   const onAddOptionClick = () => {
-    setOptionsNumber(current => current + 1);
+    // setOptionsNumber 현재 날짜 및 시간을 기준으로 맨 앞에 배열을 추가하고, 그 뒤에 이전 OptionsNumber내용을 나열함
+    // 날짜로 정하는 unique한 방식이 마음에 안들면 uuid를 이용해도됨
+    setOptionsNumber(current => [Date.now(), ...current]);
   };
+
+  // delete버튼 클릭할때
   const onDeleteClick = (idToDelete: number) => {
-    setOptionsNumber(current => current - 1);
+    // 해당 함수로 전달된 arguement와 일치하는 id를 제외한 나머지를 덮어씌움
+    setOptionsNumber(current => current.filter(id => id !== idToDelete));
     // input을 사라지게 제어하는 것
     // 제어하고 싶은 대상(input의 name)을 첫번째 인자로
     // 두번째 인자는 어떤 상태로 만들것인지? 여기선 ""상태로  빈값을 돌려줘서 삭제함
-    // @ts-ignore
     setValue(`${idToDelete}-optionName`, '');
-    // @ts-ignore
     setValue(`${idToDelete}-optionExtra`, '');
   };
   return (
@@ -122,30 +140,34 @@ export const AddDish = () => {
           <h4 className="font-medium  mb-3 text-lg">Dish Options</h4>
           <span
             onClick={onAddOptionClick}
-            className=" cursor-pointer text-white bg-gray-900 py-1 px-2 mt-5 bg-"
+            className="cursor-pointer text-white bg-gray-900 py-1 px-2 mt-5 bg-"
           >
             Add Dish Option
           </span>
-          {optionsNumber !== 0 &&
-            //   가본적으로 길이가 optionsNumber인 비어있는 배열을 줌
-            Array.from(new Array(optionsNumber)).map((_, index) => (
-              <div key={index} className="mt-5">
+          {optionsNumber.length !== 0 &&
+            optionsNumber.map(id => (
+              <div key={id} className="mt-5">
                 <input
                   ref={register}
-                  name={`${index}-optionName`}
+                  name={`${id}-optionName`}
                   className="py-2 px-4 focus:outline-none mr-3 focus:border-gray-600 border-2"
                   type="text"
                   placeholder="Option Name"
                 />
                 <input
                   ref={register}
-                  name={`${index}-optionExtra`}
+                  name={`${id}-optionExtra`}
                   className="py-2 px-4 focus:outline-none focus:border-gray-600 border-2"
                   type="number"
                   min={0}
                   placeholder="Option Extra"
                 />
-                <span onClick={() => onDeleteClick(index)}>Delete Option</span>
+                <span
+                  className="cursor-pointer text-white bg-red-500 ml-3 py-3 px-4 mt-5 bg-"
+                  onClick={() => onDeleteClick(id)}
+                >
+                  Delete Option
+                </span>
               </div>
             ))}
         </div>

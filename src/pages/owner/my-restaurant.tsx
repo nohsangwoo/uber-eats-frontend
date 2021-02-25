@@ -32,6 +32,7 @@ interface IParams {
 
 export const MyRestaurant = () => {
   const { id } = useParams<IParams>();
+  console.log('id확인', id);
   const { data } = useQuery<myRestaurant, myRestaurantVariables>(
     MY_RESTAURANT_QUERY,
     {

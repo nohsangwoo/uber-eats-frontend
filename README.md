@@ -839,3 +839,7 @@ Access to localstorage on cypress
     setValue(`${idToDelete}-optionExtra`, '');
 
 ```
+
+# 20.11 DishOptions part Two
+
+- 매번 add option을 클릭할 때마다, option들은 array가 되도록 함

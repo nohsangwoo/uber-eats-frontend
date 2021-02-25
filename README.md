@@ -853,3 +853,49 @@ Access to localstorage on cypress
 - reactjs 에서 cahart 생성하는 쉬운 방법(Victory 사용법)
 
 https://formidable.com/open-source/victory/ 참고
+
+# 20.14 Victory Charts part Two
+
+간단한 사용예
+
+```
+//before return...
+const chartData = [
+    { x: 1, y: 3000 },
+    { x: 2, y: 1500 },
+    { x: 3, y: 4250 },
+    { x: 4, y: 1250 },
+    { x: 5, y: 2300 },
+    { x: 6, y: 7150 },
+    { x: 7, y: 6830 },
+    { x: 8, y: 6830 },
+    { x: 9, y: 6830 },
+    { x: 10, y: 6830 },
+    { x: 11, y: 6830 },
+  ];
+
+  return(
+    ...
+ <VictoryChart domainPadding={20} animate={{ duration: 500 }}>
+    <VictoryAxis
+      label="Amount of Money"
+      dependentAxis
+      tickValues={[20, 30, 40, 50, 60]}
+    />
+    <VictoryAxis label="Days of Life" />
+    <VictoryBar
+      data={[
+        { x: 10, y: 20 },
+        { x: 20, y: 5 },
+        { x: 35, y: 55 },
+        { x: 45, y: 99 },
+      ]}
+    />
+  </VictoryChart>
+  <VictoryPie
+    data={chartData}
+    colorScale={['tomato', 'orange', 'gold', 'cyan', 'navy']}
+  />
+  ...
+  )
+```

@@ -914,3 +914,21 @@ https://paddle.com/ 참조
 # 22 MAKING AN ORDER
 
 # 22.0 Extending the Dish Component
+
+# 22.1 Making Order part One
+
+# 22.2 Making Order part Two
+
+- client가 주문시 작동하는 방법 설정
+
+# 22.3 Making Order part Three
+
+# 22.4 Making Order part Four
+
+- 주무할때 옵션선택했던거 다시 선택되지 않게 하기
+
+# 22.5 Making Order part Five
+
+- 주문시 옵션 선택 후 제거 할수있는 기능 추가
+
+# 22.6 Making Order part Six

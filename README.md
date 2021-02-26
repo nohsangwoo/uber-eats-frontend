@@ -903,3 +903,8 @@ const chartData = [
 # 20.15 Victory Charts part Three
 
 - order parts 완료후 다시 확인해보기
+
+# 21 PAYMENTS
+
+https://paddle.com/ 참조
+계정만들기

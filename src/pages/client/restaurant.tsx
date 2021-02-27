@@ -41,7 +41,7 @@ const CREATE_ORDER_MUTATION = gql`
     }
   }
 `;
-
+// Restaurant route가 전달받는 param은 id:string이다
 interface IRestaurantParams {
   id: string;
 }
@@ -149,6 +149,10 @@ export const Restaurant = () => {
     onCompleted,
   });
   const triggerConfirmOrder = () => {
+    // 로딩중 버튼을 클릭했을때 작동하지 않도록 설정
+    if (placingOrder) {
+      return;
+    }
     if (orderItems.length === 0) {
       alert("Can't place empty order");
       return;

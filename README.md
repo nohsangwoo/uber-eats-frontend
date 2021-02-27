@@ -932,3 +932,11 @@ https://paddle.com/ 참조
 - 주문시 옵션 선택 후 제거 할수있는 기능 추가
 
 # 22.6 Making Order part Six
+
+# 23 REALTIME ORDER
+
+# 23.0 Order Component
+
+- getOrder 쿼리 사용(subscription)
+  모든 유저가 볼수있는 주문 컴포넌트
+  주문 상태를 확인한다음 실시간으로 확인할수있는 기능을 가진 컴포넌트

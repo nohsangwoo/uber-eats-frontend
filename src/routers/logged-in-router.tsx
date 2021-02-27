@@ -13,6 +13,8 @@ import { MyRestaurants } from '../pages/owner/my-restaurants';
 import { AddRestaurant } from '../pages/owner/add-restaurants';
 import { MyRestaurant } from '../pages/owner/my-restaurant';
 import { AddDish } from '../pages/owner/add-dish';
+import { Order } from '../pages/order';
+
 // switch는 하나의 route만 인식해서 변수처럼 component를 설정해줌
 // key는 일종의 규칙임 array반환 형식으로 route를구성 한경우 key를 입력해줘야함
 const clientRoutes = [
@@ -38,6 +40,7 @@ const clientRoutes = [
 const commonRoutes = [
   { path: '/confirm', component: <ConfirmEmail /> },
   { path: '/edit-profile', component: <EditProfile /> },
+  { path: '/orders/:id', component: <Order /> },
 ];
 
 const restaurantRoutes = [

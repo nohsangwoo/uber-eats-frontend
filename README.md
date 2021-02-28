@@ -985,3 +985,14 @@ function LatestComment({ postID }) {
   return <h4>New comment: {!loading && commentAdded.content}</h4>;
 }
 ```
+
+# 23.2 subscribeToMore
+
+subscriptoion은 변화가 있을때만 감지해서 알려준다
+따라서 기본적으로 subscription상태가 아닌 쿼리를 끌어다 사용하다
+subscription이 작동하면 변화된 데이터를 치환해야하는데 이 기능을 수동으로 할수도있지만
+apollo에서 이미 기능 구현을 해놓음 그 기능 이름이 subscribeToMore,
+즉 useQuery와 useSubscription을 각각 나눠 사용 하는 대신에
+query로 부터 data를 가져오면 subscribeToMore 할거임
+
+- https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query 참고

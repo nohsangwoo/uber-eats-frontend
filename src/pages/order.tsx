@@ -1,5 +1,5 @@
 import { gql, useQuery, useSubscription } from '@apollo/client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { FULL_ORDER_FRAGMENT } from '../fragments';
@@ -37,24 +37,80 @@ interface IParams {
 
 export const Order = () => {
   const params = useParams<IParams>();
-  const { data } = useQuery<getOrder, getOrderVariables>(GET_ORDER, {
-    variables: {
-      input: {
-        id: +params.id,
+  // query에 변화가 있을때 감지되는 subscribeToMore 구현
+  // useEffect에서 구현됨
+  const { data, subscribeToMore } = useQuery<getOrder, getOrderVariables>(
+    GET_ORDER,
+    {
+      variables: {
+        input: {
+          id: +params.id,
+        },
       },
-    },
-  });
-  const { data: subscriptionData } = useSubscription<
-    orderUpdates,
-    orderUpdatesVariables
-  >(ORDER_SUBSCRIPTION, {
-    variables: {
-      input: {
-        id: +params.id,
-      },
-    },
-  });
-  console.log(subscriptionData);
+    }
+  );
+
+  useEffect(() => {
+    let cleanUp = false;
+    if (!cleanUp) {
+      if (data?.getOrder.ok) {
+        subscribeToMore({
+          // 해당 쿼리를 subscription하고있는 subscriptionquery를 지정
+          document: ORDER_SUBSCRIPTION,
+          // 해당 subscription의 input Variables
+          variables: {
+            input: {
+              id: +params.id,
+            },
+          },
+          // updateQuery는 이전의query 결과(prev)와 새로운 subscriptionData가 필요한 함수
+          updateQuery: (
+            prev,
+            {
+              subscriptionData: { data },
+            }: // subscriptionData안 data의 type지정 output DTO
+            // 이것을 설정안하면 typescript가 불평을한다 왜냐하면
+            // query랑 subscription이랑 output형태가 같은줄로 알고있기에
+            // 다르다고 명시해줌
+            { subscriptionData: { data: orderUpdates } }
+          ) => {
+            // 변화된 데이터가 없다면(subscription이 변화된것이 없다고 인식하고있을때 ) 이전 결과(useQuery)를 return해줌
+            if (!data) return prev;
+            // 변화가 감지되면(subscription동작)
+            // data가 존재하는 경우에는, 기존의 것과 새로운 data가 같이 있어야함
+            return {
+              // 반환 형식을 useQuery와 subsciprion을 섞어서 반환해야하기때문에 이런식으로 지정
+              // 먼저 useQuery내용을 spread한다음 그다음 subscription내용을 overwride해줌
+              //  useQuery의 getOrder는 ok,error,order의 반환값을 가지고있고
+              //  subsciption의 getOrder는 order의 내용만 가지고 있으니 이런 형식으로 만들어준것
+              getOrder: {
+                ...prev.getOrder,
+                order: {
+                  ...data.orderUpdates,
+                },
+              },
+            };
+          },
+        });
+      }
+    }
+    return () => {
+      cleanUp = true;
+    };
+  }, [data]);
+
+  // const { data: subscriptionData } = useSubscription<
+  //   orderUpdates,
+  //   orderUpdatesVariables
+  // >(ORDER_SUBSCRIPTION, {
+  //   variables: {
+  //     input: {
+  //       id: +params.id,
+  //     },
+  //   },
+  // });
+  // console.log(subscriptionData);
+
   return (
     <div className="mt-32 container flex justify-center">
       <Helmet>

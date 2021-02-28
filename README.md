@@ -940,3 +940,48 @@ https://paddle.com/ 참조
 - getOrder 쿼리 사용(subscription)
   모든 유저가 볼수있는 주문 컴포넌트
   주문 상태를 확인한다음 실시간으로 확인할수있는 기능을 가진 컴포넌트
+
+# 23.1 Subscription Setup
+
+- https://www.apollographql.com/docs/react/data/subscriptions/#setting-up-the-transport 참고
+  npm install subscriptions-transport-ws
+
+- 웹소켓 링크 apollo.js에 적용
+
+- ws설정은 split이라는 함수를 가지는데
+
+```
+const splitLink = split(
+  ({ query }) => {
+    const definition = getMainDefinition(query);
+    return (
+      definition.kind === 'OperationDefinition' &&
+      definition.operation === 'subscription'
+    );
+  },
+  <!--splitLink는 split함수의 반환이 true이면 wsLink를 가지고 false를 반환하면 httpLink를 가짐 -->
+  wsLink,
+  httpLink,
+);
+```
+
+- subscription 사용예
+
+```
+const COMMENTS_SUBSCRIPTION = gql`
+  subscription OnCommentAdded($postID: ID!) {
+    commentAdded(postID: $postID) {
+      id
+      content
+    }
+  }
+`;
+
+function LatestComment({ postID }) {
+  const { data: { commentAdded }, loading } = useSubscription(
+    COMMENTS_SUBSCRIPTION,
+    { variables: { postID } }
+  );
+  return <h4>New comment: {!loading && commentAdded.content}</h4>;
+}
+```

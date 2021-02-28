@@ -60,6 +60,7 @@ export const Restaurant = () => {
   );
   const [orderStarted, setOrderStarted] = useState(false);
   const [orderItems, setOrderItems] = useState<CreateOrderItemInput[]>([]);
+
   const triggerStartOrder = () => {
     setOrderStarted(true);
   };
@@ -134,6 +135,7 @@ export const Restaurant = () => {
     setOrderItems([]);
   };
   const history = useHistory();
+
   const onCompleted = (data: createOrder) => {
     const {
       createOrder: { ok, orderId },
@@ -157,6 +159,7 @@ export const Restaurant = () => {
       alert("Can't place empty order");
       return;
     }
+    console.log(orderItems);
     const ok = window.confirm('You are about to place an order');
     if (ok) {
       createOrderMutation({

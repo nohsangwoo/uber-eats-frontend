@@ -3,11 +3,9 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { FULL_ORDER_FRAGMENT } from '../fragments';
+import { useMe } from '../hooks/useMe';
 import { getOrder, getOrderVariables } from '../__generated__/getOrder';
-import {
-  orderUpdates,
-  orderUpdatesVariables,
-} from '../__generated__/orderUpdates';
+import { orderUpdates } from '../__generated__/orderUpdates';
 
 const GET_ORDER = gql`
   query getOrder($input: GetOrderInput!) {
@@ -36,6 +34,7 @@ interface IParams {
 }
 
 export const Order = () => {
+  const { data: userData } = useMe();
   const params = useParams<IParams>();
   // query에 변화가 있을때 감지되는 subscribeToMore 구현
   // useEffect에서 구현됨
@@ -142,9 +141,21 @@ export const Order = () => {
               {data?.getOrder.order?.driver?.email || 'Not yet.'}
             </span>
           </div>
-          <span className=" text-center mt-5 mb-3  text-2xl text-lime-600">
-            Status: {data?.getOrder.order?.status}
-          </span>
+          {userData?.me.role === 'Client' && (
+            <span className=" text-center mt-5 mb-3  text-2xl text-lime-600">
+              Status: {data?.getOrder.order?.status}
+            </span>
+          )}
+          {userData?.me.role === 'Owner' && (
+            <>
+              {data?.getOrder.order?.status === 'Pending' && (
+                <button className="btn">Accept Order</button>
+              )}
+              {data?.getOrder.order?.status === 'Cooking' && (
+                <button className="btn">Order Cooked</button>
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

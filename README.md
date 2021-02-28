@@ -996,3 +996,8 @@ apollo에서 이미 기능 구현을 해놓음 그 기능 이름이 subscribeToM
 query로 부터 data를 가져오면 subscribeToMore 할거임
 
 - https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query 참고
+
+# 23.3 Restaurant Orders
+
+- owner에서 주문이 들어오면 실시간으로 알림을 받는 기능
+  (새로운 주문이 들어오면 order페이지로 즉시 redirect 되게함)

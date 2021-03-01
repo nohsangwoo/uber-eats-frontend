@@ -1001,3 +1001,5 @@ query로 부터 data를 가져오면 subscribeToMore 할거임
 
 - owner에서 주문이 들어오면 실시간으로 알림을 받는 기능
   (새로운 주문이 들어오면 order페이지로 즉시 redirect 되게함)
+
+# 23.4 Edit Order

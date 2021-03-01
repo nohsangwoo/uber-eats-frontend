@@ -1003,3 +1003,65 @@ query로 부터 data를 가져오면 subscribeToMore 할거임
   (새로운 주문이 들어오면 order페이지로 즉시 redirect 되게함)
 
 # 23.4 Edit Order
+
+- owner만 사용 하는 mutation
+  주문의 상태를 cooking과 cooked로 변경 가능하게 만들어주는 mutation
+
+# 23.5 Driver Dashboard part One
+
+- 구글맵 사용방법
+  https://www.npmjs.com/package/google-map-react 참고
+  설치후 @types/google-map-react 도 설치 (for typescript)
+
+이걸 사용하기위해선 구글키 값이 필요함
+
+1. https://console.cloud.google.com/ 접속
+2. 새프로젝트 등록
+3. maps javascript api 검색
+4. enable클릭
+5. credential에서 사용자 인증정보 키를를 만든다
+6. 사용자 인증정보 만들기 => api key만들기
+7. 만든 api키를 프론트엔드에 그대로 사용하는대신 특정 주소에서만 사용가능하게 설정함
+8. 혹시 프로젝트에 카드 등록이 안됐다면 카드등록
+
+https://console.cloud.google.com/google/maps-apis/metrics?project=uber-east-clone 에서 api관리 확인
+
+- onApiLoaded (map컨트롤 관련)
+  https://developers.google.com/maps/documentation/javascript/reference/map 참고
+  // map은 당장 내가 가지고있는 지도정보 (화면에 보이는 지도 정보)
+  // maps는 내가 사용할수 있는 google maps객체 (map의 제어를 위한)
+
+# 23.7 Driver Dashboard part Three
+
+- 구글맵 위에 경로 그리기 시작
+  구글맵 위에 컴포넌트를 불러올수있음 따라서 이런 기능을 사용가능
+  구글맵 위에 자동차 표시 그리기
+
+# 23.8 Address Geocoding
+
+typescript와 google maps를 사용하는 방법
+npm install @types/googlemaps 설치후
+tsconfig.json 의 compilerOptions에 "types": ["googlemaps"] 추가
+
+https://console.cloud.google.com/marketplace/product/google/directions-backend.googleapis.com?q=search&referrer=search&hl=ko&project=uber-east-clone directions api활성화
+
+- geocoding api 또한 활성화
+  (검색한 좌표의 정확한 위치 및 주소를 나타내줌)
+  client의 집주소등을 알아내거나 저장하기위한..
+  백엔드에서 user entity(테이블)에 좌표를 저장하고 그 좌표를 기준으로 주소를 알아냄
+  사용법
+
+```
+const geocoder = new google.maps.Geocoder();
+  geocoder.geocode(
+    {
+      // 여기서 좌표를 전달받음, 이 좌표를 기준으로 주소를 알려줌
+      location: new google.maps.LatLng(driverCoords.lat, driverCoords.lng),
+    },
+    (results, status) => {
+      console.log(status, results);
+    }
+  );
+```
+
+https://developers.google.com/maps/documentation/javascript/examples 에서 maps와 관련된 DOC확인

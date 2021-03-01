@@ -14,6 +14,8 @@ import { AddRestaurant } from '../pages/owner/add-restaurants';
 import { MyRestaurant } from '../pages/owner/my-restaurant';
 import { AddDish } from '../pages/owner/add-dish';
 import { Order } from '../pages/order';
+import { UserRole } from '../__generated__/globalTypes';
+import { Dashboard } from '../pages/driver/dashboard';
 
 // switch는 하나의 route만 인식해서 변수처럼 component를 설정해줌
 // key는 일종의 규칙임 array반환 형식으로 route를구성 한경우 key를 입력해줘야함
@@ -43,6 +45,7 @@ const commonRoutes = [
   { path: '/orders/:id', component: <Order /> },
 ];
 
+// owner가 로그인했을때
 const restaurantRoutes = [
   { path: '/', component: <MyRestaurants /> },
   { path: '/add-restaurant', component: <AddRestaurant /> },
@@ -51,6 +54,8 @@ const restaurantRoutes = [
   { path: '/restaurants/:restaurantId/add-dish', component: <AddDish /> },
 ];
 
+// 배달원이 로그인했을때
+const driverRoutes = [{ path: '/', component: <Dashboard /> }];
 // ME_QUERY는 front-end에서 호출하기위한용도
 // gql은 front-end와 backend를 연결해주는 apollographql 도구
 
@@ -74,13 +79,13 @@ export const LoggedInRouter = () => {
       <Header />
       {/* router컨트롤 방법 */}
       <Switch>
-        {data.me.role === 'Client' &&
+        {data.me.role === UserRole.Client &&
           clientRoutes.map(route => (
             <Route exact key={route.path} path={route.path}>
               {route.component}
             </Route>
           ))}
-        {data.me.role === 'Owner' &&
+        {data.me.role === UserRole.Owner &&
           restaurantRoutes.map(route => (
             <Route exact key={route.path} path={route.path}>
               {route.component}
@@ -91,6 +96,12 @@ export const LoggedInRouter = () => {
             {route.component}
           </Route>
         ))}
+        {data.me.role === UserRole.Delivery &&
+          driverRoutes.map(route => (
+            <Route exact key={route.path} path={route.path}>
+              {route.component}
+            </Route>
+          ))}
         {/* potato를입력하면 / 로 이동함 */}
         {/* <Redirect from="/potato" to="/" /> */}
 

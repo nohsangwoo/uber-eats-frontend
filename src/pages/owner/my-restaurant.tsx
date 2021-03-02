@@ -8,7 +8,6 @@ import {
   VictoryChart,
   VictoryLabel,
   VictoryLine,
-  VictoryPie,
   VictoryTheme,
   VictoryTooltip,
   VictoryVoronoiContainer,

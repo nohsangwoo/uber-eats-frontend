@@ -1065,3 +1065,34 @@ const geocoder = new google.maps.Geocoder();
 ```
 
 https://developers.google.com/maps/documentation/javascript/examples 에서 maps와 관련된 DOC확인
+
+# 23.9 Painting Directions
+
+google map에 경로 표시해주기
+
+이제 CLIENT의 좌표랑 delivery의 좌표를 알아낼수만 있다면 경로를 생성가능
+
+# 23.10 Coocked Order Subscription
+
+챌린지 내용
+주문이 들어온다면
+배달원의 현재위치에서 해당 client의 주소로 예상경로를 보여줌
+
+Accept Challenge 버튼이 이내용
+
+- google maps api 정보 번역된곳
+  http://tcpschool.com/html/html5_api_geolocation
+
+# 23.11 Final Test
+
+배달원이 요리가 된것을 픽업했을때 딜리버리 상태로 만들어줌
+
+# DEPLOY TO PRODUCTION
+
+### package.json => script 추가
+
+- tailwind 빌드관련
+  "prebuild": "npm run tailwind:build",
+- 경고를 에러로 인식하지 않도록 설정
+  "build": "CI=false react-scripts build",
+  netlify가 build할때 경고를 에러로 인식하지 않게 한다는 뜻

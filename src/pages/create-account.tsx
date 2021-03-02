@@ -33,7 +33,7 @@ export const CreateAccount = () => {
     //getValues: form submit시 전송되는 값들 가지고있음
     getValues,
     // watch: 실시간으로 변화를 감지하여 변화가 있을때마다 register에 등록된 태그의 value를 가지고있음(name을 기준으로 구분함)
-    watch,
+    // watch,
     // form  submit시 나타나는 error
     errors,
     // handleSubmit: form submit이 성공 했을때와 실패했을때를 핸들링하기위한 함수

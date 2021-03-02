@@ -1110,3 +1110,11 @@ Accept Challenge 버튼이 이내용
 ```
 "tailwind:build": "cross-env NODE_ENV=production tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css",
 ```
+
+- root를 인식하지 못하는 에러 수정 (for netlify)
+  https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file 참고
+  ```
+  _redirects파일을 public폴더안에 생성
+  모든 경로를 요청하면 일단 index.html을 찾아서 보내준다
+  /*  /index.html 200
+  ```

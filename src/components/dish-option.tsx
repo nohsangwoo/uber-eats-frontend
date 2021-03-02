@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface IDishOptionProps {
   isSelected: boolean;
@@ -28,7 +28,7 @@ export const DishOption: React.FC<IDishOptionProps> = ({
     <span
       onClick={onClick}
       className={`border px-2 py-1 ${
-        isSelected ? 'border-gray-800' : 'hover:border-gray-800'
+        isSelected ? "border-gray-800" : "hover:border-gray-800"
       }`}
     >
       <span className="mr-2">{name}</span>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { restaurant_restaurant_restaurant_menu_options } from '../__generated__/restaurant';
+import React from "react";
+import { restaurant_restaurant_restaurant_menu_options } from "../__generated__/restaurant";
 
 interface IDishProps {
   id?: number;
@@ -40,20 +40,20 @@ export const Dish: React.FC<IDishProps> = ({
   return (
     <div
       className={` px-8 py-4 border cursor-pointer  transition-all ${
-        isSelected ? 'border-gray-800' : ' hover:border-gray-800'
+        isSelected ? "border-gray-800" : " hover:border-gray-800"
       }`}
     >
       <div className="mb-5">
         <h3 className="text-lg font-medium flex items-center ">
-          {name}{' '}
+          {name}{" "}
           {orderStarted && (
             <button
               className={`ml-3 py-1 px-3 focus:outline-none text-sm  text-white ${
-                isSelected ? 'bg-red-500' : ' bg-lime-600'
+                isSelected ? "bg-red-500" : " bg-lime-600"
               }`}
               onClick={onClick}
             >
-              {isSelected ? 'Remove' : 'Add'}
+              {isSelected ? "Remove" : "Add"}
             </button>
           )}
         </h3>

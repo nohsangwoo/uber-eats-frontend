@@ -1,12 +1,12 @@
-import { MockedProvider } from '@apollo/client/testing';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { render, waitFor } from '@testing-library/react';
-import React from 'react';
-import { ME_QUERY } from '../../hooks/useMe';
-import { Header } from '../header';
+import { MockedProvider } from "@apollo/client/testing";
+import { BrowserRouter as Router } from "react-router-dom";
+import { render, waitFor } from "@testing-library/react";
+import React from "react";
+import { ME_QUERY } from "../../hooks/useMe";
+import { Header } from "../header";
 
-describe('<Header />', () => {
-  it('renders verify banner', async () => {
+describe("<Header />", () => {
+  it("renders verify banner", async () => {
     await waitFor(async () => {
       const { getByText } = render(
         <MockedProvider
@@ -19,8 +19,8 @@ describe('<Header />', () => {
                 data: {
                   me: {
                     id: 1,
-                    email: '',
-                    role: '',
+                    email: "",
+                    role: "",
                     verified: false,
                   },
                 },
@@ -33,11 +33,11 @@ describe('<Header />', () => {
           </Router>
         </MockedProvider>
       );
-      await new Promise(resolve => setTimeout(resolve, 0));
-      getByText('Please verify your email.');
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      getByText("Please verify your email.");
     });
   });
-  it('renders without verify banner', async () => {
+  it("renders without verify banner", async () => {
     await waitFor(async () => {
       const { queryByText } = render(
         <MockedProvider
@@ -50,8 +50,8 @@ describe('<Header />', () => {
                 data: {
                   me: {
                     id: 1,
-                    email: '',
-                    role: '',
+                    email: "",
+                    role: "",
                     verified: true,
                   },
                 },
@@ -64,8 +64,8 @@ describe('<Header />', () => {
           </Router>
         </MockedProvider>
       );
-      await new Promise(resolve => setTimeout(resolve, 0));
-      expect(queryByText('Please verify your email.')).toBeNull();
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      expect(queryByText("Please verify your email.")).toBeNull();
     });
   });
 });

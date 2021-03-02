@@ -1,33 +1,34 @@
-import { gql, useMutation, useQuery, useSubscription } from '@apollo/client';
-import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { Dish } from '../../components/dish';
+import { gql, useMutation, useQuery, useSubscription } from "@apollo/client";
+import React, { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { Dish } from "../../components/dish";
 import {
   VictoryAxis,
   VictoryChart,
   VictoryLabel,
   VictoryLine,
+  VictoryPie,
   VictoryTheme,
   VictoryTooltip,
   VictoryVoronoiContainer,
-} from 'victory';
+} from "victory";
 import {
   DISH_FRAGMENT,
   ORDERS_FRAGMENT,
   FULL_ORDER_FRAGMENT,
   RESTAURANT_FRAGMENT,
-} from '../../fragments';
-import { useMe } from '../../hooks/useMe';
+} from "../../fragments";
+import { useMe } from "../../hooks/useMe";
 import {
   createPayment,
   createPaymentVariables,
-} from '../../__generated__/createPayment';
+} from "../../__generated__/createPayment";
 import {
   myRestaurant,
   myRestaurantVariables,
-} from '../../__generated__/myRestaurant';
-import { pendingOrders } from '../../__generated__/pendingOrders';
+} from "../../__generated__/myRestaurant";
+import { pendingOrders } from "../../__generated__/pendingOrders";
 
 export const MY_RESTAURANT_QUERY = gql`
   query myRestaurant($input: MyRestaurantInput!) {
@@ -86,7 +87,7 @@ export const MyRestaurant = () => {
   );
   const onCompleted = (data: createPayment) => {
     if (data.createPayment.ok) {
-      alert('Your restaurant is being promoted!');
+      alert("Your restaurant is being promoted!");
     }
   };
   const [createPaymentMutation, { loading }] = useMutation<
@@ -130,7 +131,7 @@ export const MyRestaurant = () => {
     <div>
       <Helmet>
         <title>
-          {data?.myRestaurant.restaurant?.name || 'Loading...'} | Nuber Eats
+          {data?.myRestaurant.restaurant?.name || "Loading..."} | Nuber Eats
         </title>
         <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
       </Helmet>
@@ -143,7 +144,7 @@ export const MyRestaurant = () => {
       ></div>
       <div className="container mt-10">
         <h2 className="text-4xl font-medium mb-10">
-          {data?.myRestaurant.restaurant?.name || 'Loading...'}
+          {data?.myRestaurant.restaurant?.name || "Loading..."}
         </h2>
         <Link
           to={`/restaurants/${id}/add-dish`}
@@ -192,7 +193,7 @@ export const MyRestaurant = () => {
                     dy={-20}
                   />
                 }
-                data={data?.myRestaurant.restaurant?.orders.map(order => ({
+                data={data?.myRestaurant.restaurant?.orders.map((order) => ({
                   x: order.createdAt,
                   y: order.total,
                 }))}
@@ -210,7 +211,7 @@ export const MyRestaurant = () => {
                     fontSize: 20,
                   } as any,
                 }}
-                tickFormat={tick => new Date(tick).toLocaleDateString('ko')}
+                tickFormat={(tick) => new Date(tick).toLocaleDateString("ko")}
               />
             </VictoryChart>
           </div>

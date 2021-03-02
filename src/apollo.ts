@@ -20,7 +20,10 @@ export const authTokenVar = makeVar(token);
 // 웹소켓을 위한 설정
 const wsLink = new WebSocketLink({
   // 웹소켓을 적용할, 돌아가고 있는 graphql 백엔드의 주소
-  uri: 'ws://localhost:4000/graphql',
+  uri:
+    process.env.NODE_ENV === 'production'
+      ? 'wss://uber-eats-clone-noh.herokuapp.com/graphql'
+      : 'ws://localhost:4000/graphql',
   options: {
     reconnect: true,
     // 전달받는 params가 있는지 확인후 가져옴
@@ -33,7 +36,10 @@ const wsLink = new WebSocketLink({
 
 const httpLink = createHttpLink({
   // 일반적인 http서버를 적용할, 돌아가고 있는 graphql 백엔드의 주소
-  uri: 'http://localhost:4000/graphql',
+  uri:
+    process.env.NODE_ENV === 'production'
+      ? 'https://uber-eats-clone-noh.herokuapp.com/graphql'
+      : 'http://localhost:4000/graphql',
 });
 // http headers로 토큰 보낼수있음
 const authLink = setContext((_, { headers }) => {

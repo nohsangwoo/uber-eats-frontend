@@ -22,7 +22,7 @@ const wsLink = new WebSocketLink({
   // 웹소켓을 적용할, 돌아가고 있는 graphql 백엔드의 주소
   uri:
     process.env.NODE_ENV === 'production'
-      ? 'ws://uber-eats-clone-noh.herokuapp.com/graphql'
+      ? 'WSS://uber-eats-clone-noh.herokuapp.com/graphql'
       : 'ws://localhost:4000/graphql',
   options: {
     reconnect: true,

@@ -1096,3 +1096,17 @@ Accept Challenge 버튼이 이내용
 - 경고를 에러로 인식하지 않도록 설정
   "build": "CI=false react-scripts build",
   netlify가 build할때 경고를 에러로 인식하지 않게 한다는 뜻
+
+- tailwind 최적화
+  https://tailwindcss.com/docs/optimizing-for-production 참고
+
+- tailwind.config.js에 purge옵션 사용
+  purge의 의미는 tailwind가 우리의 파일을보고 어떤 class를 사용하고있는지 감시함
+  그리고 사용하고있는 class만 추려내서 build함
+
+- package.json에 tailwind:build부분을 production설정 했을때만 purge가 작동함
+  https://www.npmjs.com/package/cross-env 설치 (윈도우에서도 똑같이 NODE_ENV설정할수있게 해줌)
+
+```
+"tailwind:build": "cross-env NODE_ENV=production tailwind build ./src/styles/tailwind.css -o ./src/styles/styles.css",
+```

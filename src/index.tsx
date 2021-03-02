@@ -1,12 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ApolloProvider } from '@apollo/client';
-import { App } from './components/app';
-import reportWebVitals from './reportWebVitals';
-import { HelmetProvider } from 'react-helmet-async';
-
-import './styles/styles.css';
-import { client } from './apollo';
+import React from "react";
+import ReactDOM from "react-dom";
+import { ApolloProvider } from "@apollo/client";
+import { App } from "./components/app";
+import reportWebVitals from "./reportWebVitals";
+import { HelmetProvider } from "react-helmet-async";
+import "./styles/styles.css";
+import { client } from "./apollo";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,7 +15,7 @@ ReactDOM.render(
       </HelmetProvider>
     </ApolloProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

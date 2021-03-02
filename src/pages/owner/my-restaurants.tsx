@@ -1,10 +1,10 @@
-import { gql, useQuery } from '@apollo/client';
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import { Restaurant } from '../../components/restaurant';
-import { RESTAURANT_FRAGMENT } from '../../fragments';
-import { myRestaurants } from '../../__generated__/myRestaurants';
+import { gql, useQuery } from "@apollo/client";
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { Restaurant } from "../../components/restaurant";
+import { RESTAURANT_FRAGMENT } from "../../fragments";
+import { myRestaurants } from "../../__generated__/myRestaurants";
 
 export const MY_RESTAURANTS_QUERY = gql`
   query myRestaurants {
@@ -21,7 +21,6 @@ export const MY_RESTAURANTS_QUERY = gql`
 
 export const MyRestaurants = () => {
   const { data } = useQuery<myRestaurants>(MY_RESTAURANTS_QUERY);
-
   return (
     <div>
       <Helmet>
@@ -42,10 +41,10 @@ export const MyRestaurants = () => {
           </>
         ) : (
           <div className="grid mt-16 md:grid-cols-3 gap-x-5 gap-y-10">
-            {data?.myRestaurants.restaurants.map(restaurant => (
+            {data?.myRestaurants.restaurants.map((restaurant) => (
               <Restaurant
                 key={restaurant.id}
-                id={restaurant.id + ''}
+                id={restaurant.id + ""}
                 coverImg={restaurant.coverImg}
                 name={restaurant.name}
                 categoryName={restaurant.category?.name}

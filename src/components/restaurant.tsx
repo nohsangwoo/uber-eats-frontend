@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 interface IRestaurantProps {
   id: string;
@@ -8,14 +8,12 @@ interface IRestaurantProps {
   categoryName?: string;
 }
 
-// React.FC: react function component라고 알려주는거임
 export const Restaurant: React.FC<IRestaurantProps> = ({
   id,
   coverImg,
   name,
   categoryName,
 }) => (
-  // 레스토랑router으로 parameter를 같이 보냄
   <Link to={`/restaurants/${id}`}>
     <div className="flex flex-col">
       <div

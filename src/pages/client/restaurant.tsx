@@ -1,19 +1,19 @@
-import { gql, useMutation, useQuery } from '@apollo/client';
-import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { useHistory, useParams } from 'react-router-dom';
-import { Dish } from '../../components/dish';
-import { DishOption } from '../../components/dish-option';
-import { DISH_FRAGMENT, RESTAURANT_FRAGMENT } from '../../fragments';
+import { gql, useMutation, useQuery } from "@apollo/client";
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { useHistory, useParams } from "react-router-dom";
+import { Dish } from "../../components/dish";
+import { DishOption } from "../../components/dish-option";
+import { DISH_FRAGMENT, RESTAURANT_FRAGMENT } from "../../fragments";
 import {
   createOrder,
   createOrderVariables,
-} from '../../__generated__/createOrder';
-import { CreateOrderItemInput } from '../../__generated__/globalTypes';
+} from "../../__generated__/createOrder";
+import { CreateOrderItemInput } from "../../__generated__/globalTypes";
 import {
   restaurant,
   restaurantVariables,
-} from '../../__generated__/restaurant';
+} from "../../__generated__/restaurant";
 
 const RESTAURANT_QUERY = gql`
   query restaurant($input: RestaurantInput!) {
@@ -41,7 +41,7 @@ const CREATE_ORDER_MUTATION = gql`
     }
   }
 `;
-// Restaurant route가 전달받는 param은 id:string이다
+
 interface IRestaurantParams {
   id: string;
 }
@@ -60,12 +60,11 @@ export const Restaurant = () => {
   );
   const [orderStarted, setOrderStarted] = useState(false);
   const [orderItems, setOrderItems] = useState<CreateOrderItemInput[]>([]);
-
   const triggerStartOrder = () => {
     setOrderStarted(true);
   };
   const getItem = (dishId: number) => {
-    return orderItems.find(order => order.dishId === dishId);
+    return orderItems.find((order) => order.dishId === dishId);
   };
   const isSelected = (dishId: number) => {
     return Boolean(getItem(dishId));
@@ -74,10 +73,12 @@ export const Restaurant = () => {
     if (isSelected(dishId)) {
       return;
     }
-    setOrderItems(current => [{ dishId, options: [] }, ...current]);
+    setOrderItems((current) => [{ dishId, options: [] }, ...current]);
   };
   const removeFromOrder = (dishId: number) => {
-    setOrderItems(current => current.filter(dish => dish.dishId !== dishId));
+    setOrderItems((current) =>
+      current.filter((dish) => dish.dishId !== dishId)
+    );
   };
   const addOptionToItem = (dishId: number, optionName: string) => {
     if (!isSelected(dishId)) {
@@ -86,11 +87,11 @@ export const Restaurant = () => {
     const oldItem = getItem(dishId);
     if (oldItem) {
       const hasOption = Boolean(
-        oldItem.options?.find(aOption => aOption.name === optionName)
+        oldItem.options?.find((aOption) => aOption.name == optionName)
       );
       if (!hasOption) {
         removeFromOrder(dishId);
-        setOrderItems(current => [
+        setOrderItems((current) => [
           { dishId, options: [{ name: optionName }, ...oldItem.options!] },
           ...current,
         ]);
@@ -104,11 +105,11 @@ export const Restaurant = () => {
     const oldItem = getItem(dishId);
     if (oldItem) {
       removeFromOrder(dishId);
-      setOrderItems(current => [
+      setOrderItems((current) => [
         {
           dishId,
           options: oldItem.options?.filter(
-            option => option.name !== optionName
+            (option) => option.name !== optionName
           ),
         },
         ...current,
@@ -120,7 +121,7 @@ export const Restaurant = () => {
     item: CreateOrderItemInput,
     optionName: string
   ) => {
-    return item.options?.find(option => option.name === optionName);
+    return item.options?.find((option) => option.name === optionName);
   };
 
   const isOptionSelected = (dishId: number, optionName: string) => {
@@ -135,7 +136,6 @@ export const Restaurant = () => {
     setOrderItems([]);
   };
   const history = useHistory();
-
   const onCompleted = (data: createOrder) => {
     const {
       createOrder: { ok, orderId },
@@ -151,7 +151,6 @@ export const Restaurant = () => {
     onCompleted,
   });
   const triggerConfirmOrder = () => {
-    // 로딩중 버튼을 클릭했을때 작동하지 않도록 설정
     if (placingOrder) {
       return;
     }
@@ -159,8 +158,7 @@ export const Restaurant = () => {
       alert("Can't place empty order");
       return;
     }
-    console.log(orderItems);
-    const ok = window.confirm('You are about to place an order');
+    const ok = window.confirm("You are about to place an order");
     if (ok) {
       createOrderMutation({
         variables: {
@@ -175,7 +173,7 @@ export const Restaurant = () => {
   return (
     <div>
       <Helmet>
-        <title>{data?.restaurant.restaurant?.name || ''} | Nuber Eats</title>
+        <title>{data?.restaurant.restaurant?.name || ""} | Nuber Eats</title>
       </Helmet>
       <div
         className=" bg-gray-800 bg-center bg-cover py-48"

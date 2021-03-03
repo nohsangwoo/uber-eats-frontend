@@ -58,7 +58,7 @@ export interface CreatePaymentInput {
 export interface CreateRestaurantInput {
   name: string;
   coverImg: string;
-  address?: string | null;
+  address: string;
   categoryName: string;
 }
 

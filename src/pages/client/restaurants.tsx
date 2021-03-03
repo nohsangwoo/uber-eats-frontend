@@ -1,15 +1,15 @@
-import { gql, useQuery } from "@apollo/client";
-import { url } from "inspector";
-import React, { useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { useForm } from "react-hook-form";
-import { Link, useHistory } from "react-router-dom";
-import { Restaurant } from "../../components/restaurant";
-import { CATEGORY_FRAGMENT, RESTAURANT_FRAGMENT } from "../../fragments";
+import { gql, useQuery } from '@apollo/client';
+import { url } from 'inspector';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useForm } from 'react-hook-form';
+import { Link, useHistory } from 'react-router-dom';
+import { Restaurant } from '../../components/restaurant';
+import { CATEGORY_FRAGMENT, RESTAURANT_FRAGMENT } from '../../fragments';
 import {
   restaurantsPageQuery,
   restaurantsPageQueryVariables,
-} from "../../__generated__/restaurantsPageQuery";
+} from '../../__generated__/restaurantsPageQuery';
 
 const RESTAURANTS_QUERY = gql`
   query restaurantsPageQuery($input: RestaurantsInput!) {
@@ -50,14 +50,14 @@ export const Restaurants = () => {
       },
     },
   });
-  const onNextPageClick = () => setPage((current) => current + 1);
-  const onPrevPageClick = () => setPage((current) => current - 1);
+  const onNextPageClick = () => setPage(current => current + 1);
+  const onPrevPageClick = () => setPage(current => current - 1);
   const { register, handleSubmit, getValues } = useForm<IFormProps>();
   const history = useHistory();
   const onSearchSubmit = () => {
     const { searchTerm } = getValues();
     history.push({
-      pathname: "/search",
+      pathname: '/search',
       search: `?term=${searchTerm}`,
     });
   };
@@ -80,8 +80,8 @@ export const Restaurants = () => {
       </form>
       {!loading && (
         <div className="max-w-screen-2xl pb-20 mx-auto mt-8">
-          <div className="flex justify-around max-w-sm mx-auto ">
-            {data?.allCategories.categories?.map((category) => (
+          <div className="flex w-full justify-around  mx-auto overflow-auto">
+            {data?.allCategories.categories?.map(category => (
               <Link key={category.id} to={`/category/${category.slug}`}>
                 <div className="flex flex-col group items-center cursor-pointer">
                   <div
@@ -96,10 +96,10 @@ export const Restaurants = () => {
             ))}
           </div>
           <div className="grid mt-16 md:grid-cols-3 gap-x-5 gap-y-10">
-            {data?.restaurants.results?.map((restaurant) => (
+            {data?.restaurants.results?.map(restaurant => (
               <Restaurant
                 key={restaurant.id}
-                id={restaurant.id + ""}
+                id={restaurant.id + ''}
                 coverImg={restaurant.coverImg}
                 name={restaurant.name}
                 categoryName={restaurant.category?.name}

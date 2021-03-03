@@ -32,9 +32,15 @@ export interface CreateAccountInput {
   role: UserRole;
 }
 
+export interface CreateCategoryInput {
+  name: string;
+  coverImg?: string | null;
+}
+
 export interface CreateDishInput {
   name: string;
   price: number;
+  photo?: string | null;
   description: string;
   options?: DishOptionInputType[] | null;
   restaurantId: number;

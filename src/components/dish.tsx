@@ -1,11 +1,12 @@
-import React from "react";
-import { restaurant_restaurant_restaurant_menu_options } from "../__generated__/restaurant";
+import React from 'react';
+import { restaurant_restaurant_restaurant_menu_options } from '../__generated__/restaurant';
 
 interface IDishProps {
   id?: number;
   description: string;
   name: string;
   price: number;
+  photo?: string;
   isCustomer?: boolean;
   orderStarted?: boolean;
   isSelected?: boolean;
@@ -19,6 +20,7 @@ export const Dish: React.FC<IDishProps> = ({
   description,
   name,
   price,
+  photo,
   isCustomer = false,
   orderStarted = false,
   options,
@@ -27,6 +29,7 @@ export const Dish: React.FC<IDishProps> = ({
   removeFromOrder,
   children: dishOptions,
 }) => {
+  console.log('inside', photo);
   const onClick = () => {
     if (orderStarted) {
       if (!isSelected && addItemToOrder) {
@@ -39,27 +42,28 @@ export const Dish: React.FC<IDishProps> = ({
   };
   return (
     <div
-      className={` px-8 py-4 border cursor-pointer  transition-all ${
-        isSelected ? "border-gray-800" : " hover:border-gray-800"
+      style={{ backgroundImage: `url(${photo})` }}
+      className={` bg-contain bg-no-repeat bg-right px-8 py-4 border cursor-pointer  transition-all ${
+        isSelected ? 'border-gray-800' : ' hover:border-gray-800'
       }`}
     >
       <div className="mb-5">
-        <h3 className="text-lg font-medium flex items-center ">
-          {name}{" "}
+        <h3 className="text-lg font-medium flex items-center">
+          {name}{' '}
           {orderStarted && (
             <button
               className={`ml-3 py-1 px-3 focus:outline-none text-sm  text-white ${
-                isSelected ? "bg-red-500" : " bg-lime-600"
+                isSelected ? 'bg-red-500' : ' bg-lime-600'
               }`}
               onClick={onClick}
             >
-              {isSelected ? "Remove" : "Add"}
+              {isSelected ? 'Remove' : 'Add'}
             </button>
           )}
         </h3>
         <h4 className="font-medium">{description}</h4>
       </div>
-      <span>${price}</span>
+      <span>${price.toLocaleString()}</span>
       {isCustomer && options && options?.length !== 0 && (
         <div>
           <h5 className="mt-8 mb-3 font-medium">Dish Options:</h5>

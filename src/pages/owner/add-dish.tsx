@@ -1,14 +1,14 @@
-import { gql, useMutation } from "@apollo/client";
-import React, { useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { useForm } from "react-hook-form";
-import { useHistory, useParams } from "react-router-dom";
-import { Button } from "../../components/button";
+import { gql, useMutation } from '@apollo/client';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useForm } from 'react-hook-form';
+import { useHistory, useParams } from 'react-router-dom';
+import { Button } from '../../components/button';
 import {
   createDish,
   createDishVariables,
-} from "../../__generated__/createDish";
-import { MY_RESTAURANT_QUERY } from "./my-restaurant";
+} from '../../__generated__/createDish';
+import { MY_RESTAURANT_QUERY } from './my-restaurant';
 
 const CREATE_DISH_MUTATION = gql`
   mutation createDish($input: CreateDishInput!) {
@@ -55,11 +55,21 @@ export const AddDish = () => {
     getValues,
     setValue,
   } = useForm<IForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
-  const onSubmit = () => {
-    const { name, price, description, ...rest } = getValues();
-    const optionObjects = optionsNumber.map((theId) => ({
+  const onSubmit = async () => {
+    const { file, name, price, description, ...rest } = getValues();
+    const actualFile = file[0];
+    const formBody = new FormData();
+    formBody.append('file', actualFile);
+    const { url: photo } = await (
+      await fetch('http://localhost:4000/uploads/', {
+        method: 'POST',
+        body: formBody,
+      })
+    ).json();
+
+    const optionObjects = optionsNumber.map(theId => ({
       name: rest[`${theId}-optionName`],
       extra: +rest[`${theId}-optionExtra`],
     }));
@@ -68,6 +78,7 @@ export const AddDish = () => {
         input: {
           name,
           price: +price,
+          photo,
           description,
           restaurantId: +restaurantId,
           options: optionObjects,
@@ -78,12 +89,12 @@ export const AddDish = () => {
   };
   const [optionsNumber, setOptionsNumber] = useState<number[]>([]);
   const onAddOptionClick = () => {
-    setOptionsNumber((current) => [Date.now(), ...current]);
+    setOptionsNumber(current => [Date.now(), ...current]);
   };
   const onDeleteClick = (idToDelete: number) => {
-    setOptionsNumber((current) => current.filter((id) => id !== idToDelete));
-    setValue(`${idToDelete}-optionName`, "");
-    setValue(`${idToDelete}-optionExtra`, "");
+    setOptionsNumber(current => current.filter(id => id !== idToDelete));
+    setValue(`${idToDelete}-optionName`, '');
+    setValue(`${idToDelete}-optionExtra`, '');
   };
   return (
     <div className="container flex flex-col items-center mt-52">
@@ -100,7 +111,7 @@ export const AddDish = () => {
           type="text"
           name="name"
           placeholder="Name"
-          ref={register({ required: "Name is required." })}
+          ref={register({ required: 'Name is required.' })}
         />
         <input
           className="input"
@@ -108,15 +119,24 @@ export const AddDish = () => {
           name="price"
           min={0}
           placeholder="Price"
-          ref={register({ required: "Price is required." })}
+          ref={register({ required: 'Price is required.' })}
         />
         <input
           className="input"
           type="text"
           name="description"
           placeholder="Description"
-          ref={register({ required: "Description is required." })}
+          ref={register({ required: 'Description is required.' })}
         />
+
+        <div>
+          <input
+            type="file"
+            name="file"
+            accept="image/*"
+            ref={register({ required: true })}
+          />
+        </div>
         <div className="my-10">
           <h4 className="font-medium  mb-3 text-lg">Dish Options</h4>
           <span
@@ -126,7 +146,7 @@ export const AddDish = () => {
             Add Dish Option
           </span>
           {optionsNumber.length !== 0 &&
-            optionsNumber.map((id) => (
+            optionsNumber.map(id => (
               <div key={id} className="mt-5">
                 <input
                   ref={register}

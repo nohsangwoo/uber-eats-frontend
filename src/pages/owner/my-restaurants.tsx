@@ -28,7 +28,6 @@ export const MyRestaurants = () => {
   const history = useHistory();
 
   const moveRoute = (CONSTANT: string) => {
-    console.log('gggg', CONSTANT);
     if (CONSTANT === CONSTANTS.RESTAURANT) {
       history.push('/add-restaurant');
     } else if (CONSTANT === CONSTANTS.CATEGORIES) {
@@ -41,7 +40,7 @@ export const MyRestaurants = () => {
         <title>My Restaurants | Nuber Eats</title>
       </Helmet>
       <div className="max-w-screen-2xl mx-auto mt-32">
-        <h2 className="flex felx-row justify-center w-full text-4xl font-medium mb-10 border-t-4 border-b-4 border-black py-2">
+        <h2 className="flex felx-row justify-center w-full text-4xl font-medium mb-10 border-t-2 border-black py-2 ">
           My Restaurants
         </h2>
 
@@ -53,12 +52,12 @@ export const MyRestaurants = () => {
           </>
         ) : (
           <>
-            <div className="flex flex-row justify-around border-t-2 border-black">
+            <div className="flex flex-row justify-around ">
               <div
                 onClick={() => {
                   moveRoute(CONSTANTS.RESTAURANT);
                 }}
-                className="transition-all w-full text-xl mb-5 cursor-pointer hover:border-black border-2"
+                className="transition-all w-full text-xl mb-5 cursor-pointer hover:border-black border-2 p-3"
               >
                 <h4 className="">Create more restaurants</h4>
                 <div className="text-lime-600 hover:underline">
@@ -69,7 +68,7 @@ export const MyRestaurants = () => {
                 onClick={() => {
                   moveRoute(CONSTANTS.CATEGORIES);
                 }}
-                className="transition-all w-full text-xl mb-5 cursor-pointer hover:border-black border-2"
+                className="transition-all w-full text-xl mb-5 cursor-pointer hover:border-black border-2 p-3"
               >
                 <h4 className="">Create more categories</h4>
                 <div className="text-lime-600 hover:underline">

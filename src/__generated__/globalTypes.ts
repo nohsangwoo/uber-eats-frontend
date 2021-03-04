@@ -89,6 +89,10 @@ export interface EditProfileInput {
   password?: string | null;
 }
 
+export interface GetDishInput {
+  dishId: number;
+}
+
 export interface GetOrderInput {
   id: number;
 }

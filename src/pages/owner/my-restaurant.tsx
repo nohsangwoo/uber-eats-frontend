@@ -126,11 +126,15 @@ export const MyRestaurant = () => {
       history.push(`/orders/${subscriptionData.pendingOrders.id}`);
     }
   }, [subscriptionData]);
+
+  const moveEditDishRouter = (dishId: number) => {
+    history.push(`/edit-dish/${dishId}`);
+  };
   return (
     <div>
       <Helmet>
         <title>
-          {data?.myRestaurant.restaurant?.name || 'Loading...'} | Nuber Eats
+          {data?.myRestaurant.restaurant?.name || 'Loading...'} | uber Eats
         </title>
         <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
       </Helmet>
@@ -163,15 +167,20 @@ export const MyRestaurant = () => {
           ) : (
             <div className="grid mt-16 md:grid-cols-3 gap-x-5 gap-y-10">
               {data?.myRestaurant.restaurant?.menu.map((dish, index) => {
-                console.log(dish.photo);
                 return (
-                  <Dish
+                  <div
                     key={index}
-                    name={dish.name}
-                    description={dish.description}
-                    price={dish.price}
-                    photo={String(dish?.photo)}
-                  />
+                    onClick={() => {
+                      moveEditDishRouter(dish.id);
+                    }}
+                  >
+                    <Dish
+                      name={dish.name}
+                      description={dish.description}
+                      price={dish.price}
+                      photo={String(dish?.photo)}
+                    />
+                  </div>
                 );
               })}
             </div>

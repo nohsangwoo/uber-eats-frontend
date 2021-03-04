@@ -8,6 +8,7 @@ import { DISH_FRAGMENT } from '../../fragments';
 import { getDish, getDishVariables } from '../../__generated__/getDish';
 import { useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
+import Options from '../../components/options';
 
 const GET_DISH_QUERY = gql`
   query getDish($input: GetDishInput!) {
@@ -35,6 +36,9 @@ interface IFormProps {
 
 function EditDish() {
   const { dishId } = useParams<IParams>();
+  const [checked, setCheck] = useState(false);
+  const [optionsNumber, setOptionsNumber] = useState<string[]>([]);
+
   const { data, loading } = useQuery<getDish, getDishVariables>(
     GET_DISH_QUERY,
     {
@@ -46,7 +50,7 @@ function EditDish() {
     }
   );
   const dish = data?.getDish?.dish;
-  console.log(dish, loading);
+  // console.log(dish, loading);
 
   const {
     register,
@@ -55,25 +59,20 @@ function EditDish() {
     getValues,
     setValue,
   } = useForm<IFormProps>({
-    mode: 'onChange',
+    mode: 'onTouched',
   });
 
-  const onSubmit = async () => {
-    const { file, name, price, description, ...rest } = getValues();
-    const actualFile = file[0];
-    const formBody = new FormData();
-    formBody.append('file', actualFile);
-    const { url: photo } = await (
-      await fetch('http://localhost:4000/uploads/', {
-        method: 'POST',
-        body: formBody,
-      })
-    ).json();
+  console.log('작동ㅇㅇㅇㅇㅇㅇㅇㅇ');
 
+  const onSubmit = async () => {
+    const { name, price, description, ...rest } = getValues();
     const optionObjects = optionsNumber.map(theId => ({
       name: rest[`${theId}-optionName`],
       extra: +rest[`${theId}-optionExtra`],
     }));
+
+    console.log(optionObjects);
+
     // createDishMutation({
     //   variables: {
     //     input: {
@@ -94,37 +93,48 @@ function EditDish() {
       setValue(`name`, `${dish?.name}`);
       setValue(`price`, `${dish?.price}`);
       setValue(`description`, `${dish?.description}`);
-    }
-    return () => {
-      cleanUp = true;
-    };
-  }, [dish?.name]);
-
-  const [optionsNumber, setOptionsNumber] = useState<string[]>([]);
-
-  useEffect(() => {
-    let cleanUp = false;
-    if (!cleanUp) {
       if (dish?.options?.length) {
         for (let i = 0; i < dish?.options?.length; i++) {
-          setOptionsNumber(current => [uuidv4(), ...current]);
+          const newId = uuidv4();
+          setOptionsNumber(current => [newId, ...current]);
         }
       }
+
+      if (!checked) {
+      }
+
+      setCheck(true);
+
+      /*
+      dish?.options?.forEach((ele, index) => {
+        console.log(ele, 'ele');
+        setValue(`${optionsNumber[index]}-optionName`, `${ele?.name}`);
+        setValue(`${optionsNumber[index]}-optionExtra`, `${ele?.extra}`);
+      });
+    */
     }
     return () => {
       cleanUp = true;
     };
-  }, [dish?.options?.length]);
+  }, [
+    dish?.name,
+    dish?.price,
+    dish?.description,
+    setValue,
+    dish?.options?.length,
+    dish?.options,
+  ]);
+
   const onAddOptionClick = () => {
     setOptionsNumber(current => [uuidv4(), ...current]);
   };
 
   const onDeleteClick = (idToDelete: string) => {
-    console.log(idToDelete);
     setOptionsNumber(current => current.filter(id => id !== idToDelete));
     setValue(`${idToDelete}-optionName`, '');
     setValue(`${idToDelete}-optionExtra`, '');
   };
+
   return (
     <div className="container flex flex-col items-center mt-52">
       <Helmet>
@@ -138,10 +148,6 @@ function EditDish() {
           onSubmit={handleSubmit(onSubmit)}
           className="grid max-w-screen-sm gap-3 mt-5 w-full mb-5"
         >
-          <input name="firstName" type="text" ref={register} />
-          <button onClick={() => setValue('name', 'Bill')}>
-            Set First Name Value
-          </button>
           <input
             className="input"
             type="text"
@@ -165,14 +171,6 @@ function EditDish() {
             ref={register({ required: 'Description is required.' })}
           />
 
-          <div>
-            <input
-              type="file"
-              name="file"
-              accept="image/*"
-              ref={register({ required: true })}
-            />
-          </div>
           <div className="my-10">
             <h4 className="font-medium  mb-3 text-lg">Dish Options</h4>
             <span
@@ -181,7 +179,7 @@ function EditDish() {
             >
               Add Dish Option
             </span>
-            {optionsNumber.length !== 0 &&
+            {/* {optionsNumber.length !== 0 &&
               optionsNumber.map(id => (
                 <div key={id} className="mt-5">
                   <input
@@ -206,12 +204,20 @@ function EditDish() {
                     Delete Option
                   </span>
                 </div>
-              ))}
+              ))} */}
+            <Options
+              optionsNumber={optionsNumber}
+              register={register}
+              onDeleteClick={onDeleteClick}
+              options={dish?.options}
+            />
           </div>
+
           <Button
             loading={loading}
-            canClick={formState.isValid}
-            actionText="Create Dish"
+            canClick={true}
+            actionText="Edit Dish"
+            getValues={getValues}
           />
         </form>
       )}

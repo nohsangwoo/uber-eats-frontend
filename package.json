@@ -17,6 +17,7 @@
     "@types/react-dom": "^16.9.10",
     "@types/react-helmet": "^6.1.0",
     "@types/react-router-dom": "^5.1.6",
+    "@types/uuid": "^8.3.0",
     "apollo": "^2.31.1",
     "autoprefixer": "^10.0.2",
     "cross-env": "^7.0.3",

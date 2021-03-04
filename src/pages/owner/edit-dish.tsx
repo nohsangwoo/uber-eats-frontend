@@ -7,7 +7,7 @@ import { FormError } from '../../components/form-error';
 import { DISH_FRAGMENT } from '../../fragments';
 import { getDish, getDishVariables } from '../../__generated__/getDish';
 import { useForm } from 'react-hook-form';
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 const GET_DISH_QUERY = gql`
   query getDish($input: GetDishInput!) {
@@ -107,7 +107,7 @@ function EditDish() {
     if (!cleanUp) {
       if (dish?.options?.length) {
         for (let i = 0; i < dish?.options?.length; i++) {
-          setOptionsNumber(current => [uuid(), ...current]);
+          setOptionsNumber(current => [uuidv4(), ...current]);
         }
       }
     }
@@ -116,7 +116,7 @@ function EditDish() {
     };
   }, [dish?.options?.length]);
   const onAddOptionClick = () => {
-    setOptionsNumber(current => [uuid(), ...current]);
+    setOptionsNumber(current => [uuidv4(), ...current]);
   };
 
   const onDeleteClick = (idToDelete: string) => {

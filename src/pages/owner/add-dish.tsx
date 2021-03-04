@@ -9,7 +9,7 @@ import {
   createDishVariables,
 } from '../../__generated__/createDish';
 import { MY_RESTAURANT_QUERY } from './my-restaurant';
-
+import { v4 as uuidv4 } from 'uuid';
 const CREATE_DISH_MUTATION = gql`
   mutation createDish($input: CreateDishInput!) {
     createDish(input: $input) {
@@ -87,11 +87,11 @@ export const AddDish = () => {
     });
     history.goBack();
   };
-  const [optionsNumber, setOptionsNumber] = useState<number[]>([]);
+  const [optionsNumber, setOptionsNumber] = useState<string[]>([]);
   const onAddOptionClick = () => {
-    setOptionsNumber(current => [Date.now(), ...current]);
+    setOptionsNumber(current => [uuidv4(), ...current]);
   };
-  const onDeleteClick = (idToDelete: number) => {
+  const onDeleteClick = (idToDelete: string) => {
     setOptionsNumber(current => current.filter(id => id !== idToDelete));
     setValue(`${idToDelete}-optionName`, '');
     setValue(`${idToDelete}-optionExtra`, '');

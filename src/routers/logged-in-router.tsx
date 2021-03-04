@@ -17,6 +17,7 @@ import { Order } from '../pages/order';
 import { Dashboard } from '../pages/driver/dashboard';
 import { UserRole } from '../__generated__/globalTypes';
 import AddCategory from '../pages/owner/add-category';
+import EditDish from '../pages/owner/edit-dish';
 
 const clientRoutes = [
   {
@@ -49,6 +50,7 @@ const restaurantRoutes = [
   { path: '/restaurants/:id', component: <MyRestaurant /> },
   { path: '/restaurants/:restaurantId/add-dish', component: <AddDish /> },
   { path: '/add-category', component: <AddCategory /> },
+  { path: '/edit-dish/:dishId', component: <EditDish /> },
 ];
 
 const driverRoutes = [{ path: '/', component: <Dashboard /> }];

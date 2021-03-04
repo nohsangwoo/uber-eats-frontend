@@ -29,7 +29,6 @@ export const Dish: React.FC<IDishProps> = ({
   removeFromOrder,
   children: dishOptions,
 }) => {
-  console.log('inside', photo);
   const onClick = () => {
     if (orderStarted) {
       if (!isSelected && addItemToOrder) {
@@ -40,16 +39,17 @@ export const Dish: React.FC<IDishProps> = ({
       }
     }
   };
+
   return (
     <div
       style={{ backgroundImage: `url(${photo})` }}
-      className={` bg-contain bg-no-repeat bg-right px-8 py-4 border cursor-pointer  transition-all ${
+      className={`bg-contain bg-no-repeat bg-right px-8 py-4 border cursor-pointer transition-all${
         isSelected ? 'border-gray-800' : ' hover:border-gray-800'
       }`}
     >
       <div className="mb-5">
         <h3 className="text-lg font-medium flex items-center">
-          {name}{' '}
+          {name}
           {orderStarted && (
             <button
               className={`ml-3 py-1 px-3 focus:outline-none text-sm  text-white ${
@@ -65,7 +65,7 @@ export const Dish: React.FC<IDishProps> = ({
       </div>
       <span>${price.toLocaleString()}</span>
       {isCustomer && options && options?.length !== 0 && (
-        <div>
+        <div className=" overflow-auto h-60">
           <h5 className="mt-8 mb-3 font-medium">Dish Options:</h5>
           <div className="grid gap-2  justify-start">{dishOptions}</div>
         </div>

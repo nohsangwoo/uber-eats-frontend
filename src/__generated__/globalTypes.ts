@@ -79,6 +79,14 @@ export interface DishOptionInputType {
   extra?: number | null;
 }
 
+export interface EditDishInput {
+  name?: string | null;
+  price?: number | null;
+  description?: string | null;
+  options?: DishOptionInputType[] | null;
+  dishId: number;
+}
+
 export interface EditOrderInput {
   id: number;
   status: OrderStatus;

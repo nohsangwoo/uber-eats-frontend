@@ -1,7 +1,7 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Button } from '../../components/button';
 import { FormError } from '../../components/form-error';
 import { DISH_FRAGMENT } from '../../fragments';
@@ -9,6 +9,7 @@ import { getDish, getDishVariables } from '../../__generated__/getDish';
 import { useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
 import Options from '../../components/options';
+import { editDish, editDishVariables } from '../../__generated__/editDish';
 
 const GET_DISH_QUERY = gql`
   query getDish($input: GetDishInput!) {
@@ -23,6 +24,15 @@ const GET_DISH_QUERY = gql`
   ${DISH_FRAGMENT}
 `;
 
+const EDIT_DISH_MUTATION = gql`
+  mutation editDish($input: EditDishInput!) {
+    editDish(input: $input) {
+      ok
+      error
+    }
+  }
+`;
+
 interface IParams {
   dishId: string;
 }
@@ -35,9 +45,22 @@ interface IFormProps {
 }
 
 function EditDish() {
+  const onCompleted = (data: editDish) => {
+    if (data.editDish.ok) {
+      alert(`success to editing dish`);
+    }
+  };
+
+  const [createPaymentMutation, { loading: mutationLoading }] = useMutation<
+    editDish,
+    editDishVariables
+  >(EDIT_DISH_MUTATION, {
+    onCompleted,
+  });
   const { dishId } = useParams<IParams>();
   const [checked, setCheck] = useState(false);
   const [optionsNumber, setOptionsNumber] = useState<string[]>([]);
+  const history = useHistory();
 
   const { data, loading } = useQuery<getDish, getDishVariables>(
     GET_DISH_QUERY,
@@ -55,14 +78,12 @@ function EditDish() {
   const {
     register,
     handleSubmit,
-    formState,
+    // formState,
     getValues,
     setValue,
   } = useForm<IFormProps>({
     mode: 'onTouched',
   });
-
-  console.log('작동ㅇㅇㅇㅇㅇㅇㅇㅇ');
 
   const onSubmit = async () => {
     const { name, price, description, ...rest } = getValues();
@@ -73,19 +94,18 @@ function EditDish() {
 
     console.log(optionObjects);
 
-    // createDishMutation({
-    //   variables: {
-    //     input: {
-    //       name,
-    //       price: +price,
-    //       photo,
-    //       description,
-    //       restaurantId: +restaurantId,
-    //       options: optionObjects,
-    //     },
-    //   },
-    // });
-    // history.goBack();
+    createPaymentMutation({
+      variables: {
+        input: {
+          name,
+          price: +price,
+          description,
+          dishId: +dishId,
+          options: optionObjects,
+        },
+      },
+    });
+    history.goBack();
   };
   useEffect(() => {
     let cleanUp = false;
@@ -179,32 +199,7 @@ function EditDish() {
             >
               Add Dish Option
             </span>
-            {/* {optionsNumber.length !== 0 &&
-              optionsNumber.map(id => (
-                <div key={id} className="mt-5">
-                  <input
-                    ref={register}
-                    name={`${id}-optionName`}
-                    className="py-2 px-4 focus:outline-none mr-3 focus:border-gray-600 border-2"
-                    type="text"
-                    placeholder="Option Name"
-                  />
-                  <input
-                    ref={register}
-                    name={`${id}-optionExtra`}
-                    className="py-2 px-4 focus:outline-none focus:border-gray-600 border-2"
-                    type="number"
-                    min={0}
-                    placeholder="Option Extra"
-                  />
-                  <span
-                    className="cursor-pointer text-white bg-red-500 ml-3 py-3 px-4 mt-5 bg-"
-                    onClick={() => onDeleteClick(id)}
-                  >
-                    Delete Option
-                  </span>
-                </div>
-              ))} */}
+
             <Options
               optionsNumber={optionsNumber}
               register={register}
@@ -215,8 +210,8 @@ function EditDish() {
 
           <Button
             loading={loading}
-            canClick={true}
-            actionText="Edit Dish"
+            canClick={!mutationLoading}
+            actionText={mutationLoading ? 'loading...' : 'Edit Dish'}
             getValues={getValues}
           />
         </form>

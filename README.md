@@ -137,7 +137,7 @@
 ## 4. 검색어로 레스토랑이름 검색 기능(User)
 
 <br><br>
-![3-search](./README_IMAGE/search.gif)
+![4-search](./README_IMAGE/search.gif)
 
 - category 이미지를 클릭하면 해당 카테고리에 해당하는 restaurant를 검색해주는 기능 구현
 - 없는 레스토랑 이름으로 검색시 안내 페이지 구현
@@ -152,12 +152,26 @@
 ## 5. 내 정보 수정 기능(Any)
 
 <br><br>
-![4-editprofile](./README_IMAGE/editprofile.gif)
+![5-editprofile](./README_IMAGE/editprofile.gif)
 
 - email과 password를 수정하는 기능 구현
 - 수정완료시 "Please enter a valid email" 안내문과 함께 email인증을 해야함
 - 사용예
   (edit-profile.tsx)
+
+<br><br>
+
+<hr>
+<br><br>
+
+## 6. 목적지까지 경로 안내(Delivery)
+
+<br><br>
+![6-makeroute](./README_IMAGE/makeroute.gif)
+
+- Google maps Api를 이용하여 임의로 지정된 목적지까지 경로를 안내받는 기능 구현
+- 사용예
+  (dashboard.tsx)
 
 <br><br>
 

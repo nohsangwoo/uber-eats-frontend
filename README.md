@@ -36,7 +36,8 @@
 - google maps API(for map)
 - victory(for graph)
 - tailwind css(for css)
-- Jest(for testing)
+- Cypress(for E2E testing)
+- Jest(for unit testing)
 - websocket(for realtime subscription)
 
 # 고도화 작업중

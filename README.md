@@ -63,6 +63,9 @@
 
 - https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query 참고
 
+<hr>
+<br><br>
+
 2. <strong>pagination 기능(페이지당 3개내용)</strong>
    <br><br>
    ![2-pagenation](./README_IMAGE/pagination.gif)
@@ -73,6 +76,9 @@
    - pagination 사용예
      (category.tsx)
 
+<hr>
+<br><br>
+
 3. <strong>category 검색 기능</strong>
    <br><br>
    ![3-category](./README_IMAGE/category.gif)
@@ -80,6 +86,9 @@
    - category 이미지를 클릭하면 해당 카테고리에 해당하는 restaurant를 검색해주는 기능 구현
    - 사용예
      (category.tsx)
+
+<hr>
+<br><br>
 
 # 고도화 작업중
 

@@ -42,7 +42,7 @@
   ![1-main-page](./README_IMAGE/main_function.gif)
 
 - pagination 기능(페이지당 3개내용)
-  ![2-pagenation](./README_IMAGE/main_function.gif)
+  ![2-pagenation](./README_IMAGE/pagination.gif)
 
 # 고도화 작업중
 

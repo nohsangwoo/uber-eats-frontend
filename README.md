@@ -2,6 +2,9 @@
   
 # Uber Eats Frontend
 - https://github.com/nohsangwoo/uber-eats-backend 와 연동됩니다(BackEnd)
+- deploy: https://uber-eats-clone-fe-noh.netlify.app/
+    (백엔드배포된 서비스의 상태가 무료버전이라 처음 접속시 sleep된상태에서 깨어나느라 조금 시간이 걸림(1~2분정도 기다려야함))
+- 설명에 첨부된 gif파일 크기로 인하여 readme파일을 불러오는데 시간이 좀더 소요될 수 있습니다. 조금 기다려주세요.
 
 <br><br>
 

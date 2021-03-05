@@ -1,26 +1,5 @@
 # Uber Eats Frontend
-<div>
-  
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=nohsangwoo&langs_count=8)](https://github.com/anuraghazra/github-readme-stats)
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=nohsangwoo&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
-
-
-
-  
-</div>
-
-[![nohsangwoo's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=nohsangwoo)](https://github.com/anuraghazra/github-readme-stats)
-
-<div>
-  
-</div>
-
-<div>  
-
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=nohsangwoo&show_icons=true&theme=dark)
-
-</div>
 
 #
 

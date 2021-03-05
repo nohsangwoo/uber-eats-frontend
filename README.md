@@ -249,6 +249,21 @@
 <hr>
 <br><br>
 
+## 12. cypress를 이용한 E2E testing
+
+<br><br>
+![12-cypress](./README_IMAGE/cypress.gif)
+
+- cypress를 사용하여 테스팅과정을 시각적으로 보여줌
+- 테스팅 코드 작성법은 jest와 많이 유사함
+
+<br><br>
+
+<hr>
+<br><br>
+
+cypress.gif
+
 # 개선해야할 부분
 
 1. 배달원의 위치 정보를 실시간으로 사용자와 레스토랑주인에게 공유하는 기능

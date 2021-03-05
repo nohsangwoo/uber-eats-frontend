@@ -1,12 +1,12 @@
-import { gql, useApolloClient, useMutation } from "@apollo/client";
-import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
-import { useHistory } from "react-router-dom";
-import { useMe } from "../../hooks/useMe";
+import { gql, useApolloClient, useMutation } from '@apollo/client';
+import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { useHistory } from 'react-router-dom';
+import { useMe } from '../../hooks/useMe';
 import {
   verifyEmail,
   verifyEmailVariables,
-} from "../../__generated__/verifyEmail";
+} from '../../__generated__/verifyEmail';
 
 const VERIFY_EMAIL_MUTATION = gql`
   mutation verifyEmail($input: VerifyEmailInput!) {
@@ -37,7 +37,7 @@ export const ConfirmEmail = () => {
           verified: true,
         },
       });
-      history.push("/");
+      history.push('/');
     }
   };
   const [verifyEmail] = useMutation<verifyEmail, verifyEmailVariables>(
@@ -47,7 +47,7 @@ export const ConfirmEmail = () => {
     }
   );
   useEffect(() => {
-    const [_, code] = window.location.href.split("code=");
+    const [_, code] = window.location.href.split('code=');
     verifyEmail({
       variables: {
         input: {
@@ -59,7 +59,7 @@ export const ConfirmEmail = () => {
   return (
     <div className="mt-52 flex flex-col items-center justify-center">
       <Helmet>
-        <title>Verify Email | Nuber Eats</title>
+        <title>Verify Email | Uber Eats</title>
       </Helmet>
       <h2 className="text-lg mb-1 font-medium">Confirming email...</h2>
       <h4 className="text-gray-700 text-sm">

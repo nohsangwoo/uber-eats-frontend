@@ -1,17 +1,17 @@
-import { gql, useMutation } from "@apollo/client";
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { authTokenVar, isLoggedInVar } from "../apollo";
-import { Button } from "../components/button";
-import { FormError } from "../components/form-error";
-import { LOCALSTORAGE_TOKEN } from "../constants";
-import nuberLogo from "../images/logo.svg";
+import { gql, useMutation } from '@apollo/client';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { authTokenVar, isLoggedInVar } from '../apollo';
+import { Button } from '../components/button';
+import { FormError } from '../components/form-error';
+import { LOCALSTORAGE_TOKEN } from '../constants';
+import nuberLogo from '../images/logo.svg';
 import {
   loginMutation,
   loginMutationVariables,
-} from "../__generated__/loginMutation";
+} from '../__generated__/loginMutation';
 
 export const LOGIN_MUTATION = gql`
   mutation loginMutation($loginInput: LoginInput!) {
@@ -36,7 +36,7 @@ export const Login = () => {
     handleSubmit,
     formState,
   } = useForm<ILoginForm>({
-    mode: "onChange",
+    mode: 'onChange',
   });
   const onCompleted = (data: loginMutation) => {
     const {
@@ -70,10 +70,10 @@ export const Login = () => {
   return (
     <div className="h-screen flex items-center flex-col mt-10 lg:mt-28">
       <Helmet>
-        <title>Login | Nuber Eats</title>
+        <title>Login | Uber Eats</title>
       </Helmet>
       <div className="w-full max-w-screen-sm flex flex-col px-5 items-center">
-        <img src={nuberLogo} className="w-52 mb-10" alt="Nuber Eats" />
+        <img src={nuberLogo} className="w-52 mb-10" alt="Uber Eats" />
         <h4 className="w-full font-medium text-left text-3xl mb-5">
           Welcome back
         </h4>
@@ -83,7 +83,7 @@ export const Login = () => {
         >
           <input
             ref={register({
-              required: "Email is required",
+              required: 'Email is required',
               pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
             })}
             name="email"
@@ -92,14 +92,14 @@ export const Login = () => {
             placeholder="Email"
             className="input"
           />
-          {errors.email?.type === "pattern" && (
-            <FormError errorMessage={"Please enter a valid email"} />
+          {errors.email?.type === 'pattern' && (
+            <FormError errorMessage={'Please enter a valid email'} />
           )}
           {errors.email?.message && (
             <FormError errorMessage={errors.email?.message} />
           )}
           <input
-            ref={register({ required: "Password is required" })}
+            ref={register({ required: 'Password is required' })}
             required
             name="password"
             type="password"
@@ -112,14 +112,14 @@ export const Login = () => {
           <Button
             canClick={formState.isValid}
             loading={loading}
-            actionText={"Log in"}
+            actionText={'Log in'}
           />
           {loginMutationResult?.login.error && (
             <FormError errorMessage={loginMutationResult.login.error} />
           )}
         </form>
         <div>
-          New to Nuber?{" "}
+          New to Uber?{' '}
           <Link to="/create-account" className="text-lime-600 hover:underline">
             Create an Account
           </Link>

@@ -64,6 +64,8 @@
 
 - https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query 참고
 
+<br><br>
+
 <hr>
 <br><br>
 
@@ -78,6 +80,8 @@
 - pagination 사용예
   (category.tsx)
 
+<br><br>
+
 <hr>
 <br><br>
 
@@ -89,6 +93,8 @@
 - category 이미지를 클릭하면 해당 카테고리에 해당하는 restaurant를 검색해주는 기능 구현
 - 사용예
   (category.tsx)
+
+<br><br>
 
 <hr>
 <br><br>

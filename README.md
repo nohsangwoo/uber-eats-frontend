@@ -262,7 +262,18 @@
 <hr>
 <br><br>
 
-cypress.gif
+## 13. 회원가입 기능
+
+<br><br>
+![13-createaccount](./README_IMAGE/createaccount.gif)
+
+- 회원가입 기능 구현
+- 회원가입후 pgadmin에서 user table query 조회로 새로운 user생성 확인
+
+<br><br>
+
+<hr>
+<br><br>
 
 # 개선해야할 부분
 

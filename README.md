@@ -41,6 +41,9 @@
 - 실시간 주문
   ![1-main-page](./README_IMAGE/main_function.gif)
 
+- pagination 기능(페이지당 3개내용)
+  ![2-pagenation](./README_IMAGE/main_function.gif)
+
 # 고도화 작업중
 
 # category 구현

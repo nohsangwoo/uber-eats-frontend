@@ -235,6 +235,20 @@
 <hr>
 <br><br>
 
+## 11. 실시간 주문 현황 그래프(Owner)
+
+<br><br>
+![11-victory](./README_IMAGE/victory.gif)
+
+- victory를 이용하여 주문의 매출을 그래프로 렌더링해서 restaurant owner가 확인 가능하게 구현
+- 사용예
+  (my-restaurant.tsx)
+
+<br><br>
+
+<hr>
+<br><br>
+
 # 개선해야할 부분
 
 1. 배달원의 위치 정보를 실시간으로 사용자와 레스토랑주인에게 공유하는 기능

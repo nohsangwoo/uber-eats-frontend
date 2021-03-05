@@ -39,7 +39,7 @@
 # 주요 기능
 
 1. realtime 상호작용 (apollo subscription을 이용한 Websocket 접근)
-   </br>
+   <br>
    ![1-main-page](./README_IMAGE/main_function.gif)
 
    - Description
@@ -64,7 +64,7 @@
 - https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query 참고
 
 2. pagination 기능(페이지당 3개내용)
-   </br>
+   <br>
    ![2-pagenation](./README_IMAGE/pagination.gif)
 
 # 고도화 작업중

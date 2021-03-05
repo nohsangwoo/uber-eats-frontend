@@ -39,6 +39,7 @@
 # 주요 기능
 
 1. realtime 상호작용 (apollo subscription을 이용한 Websocket 접근)
+   </br>
    ![1-main-page](./README_IMAGE/main_function.gif)
 
    - Description
@@ -49,7 +50,7 @@
      https://www.apollographql.com/docs/react/data/subscriptions/#setting-up-the-transport 참고
 
    - subscription 사용예
-     (dashboard.tsx 참고)
+     (dashboard.tsx)
 
    - subscribeToMore
      subscriptoion은 변화가 있을때만 감지된 데이터를 가져와 알려줌
@@ -60,12 +61,10 @@
    - subscribeToMore 사용예
      (order.tsx)
 
-   즉 useQuery와 useSubscription을 각각 나눠 사용 하는 대신에
-   query로 부터 data를 가져오면 subscribeToMore 할거임
-
 - https://www.apollographql.com/docs/react/data/subscriptions/#subscribing-to-updates-for-a-query 참고
 
 2. pagination 기능(페이지당 3개내용)
+   </br>
    ![2-pagenation](./README_IMAGE/pagination.gif)
 
 # 고도화 작업중

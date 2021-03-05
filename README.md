@@ -178,7 +178,7 @@
 <hr>
 <br><br>
 
-## 7. 목적지까지 경로 안내(Owner)
+## 7. 새로운 레스토랑 등록(Owner)
 
 <br><br>
 ![7-createRestaurant](./README_IMAGE/createRestaurant.gif)

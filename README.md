@@ -183,7 +183,7 @@
 <br><br>
 ![7-createRestaurant](./README_IMAGE/createRestaurant.gif)
 
-- restaurant owner가 자신 소유의 새로운 restaurant 생성하는 기능 구현
+- restaurant owner가 자신 소유의 새로운 restaurant을 생성하는 기능 구현
 - 사용예
   (add-restaurants.tsx)
 
@@ -197,9 +197,24 @@
 <br><br>
 ![8-createcategory](./README_IMAGE/createcategory.gif)
 
-- restaurant owner가 자신 소유의 새로운 restaurant 생성하는 기능 구현
+- restaurant owner가 새로운 category를 생성하는 기능 구현
+- 생성후 사용자(user)화면에서 새로고침하면 맨 우측에 추가한 healthy카테고리 생성 확인완료
 - 사용예
   (add-category.tsx)
+
+<br><br>
+
+<hr>
+<br><br>
+
+## 9. 새로운 메뉴 등록(Owner)
+
+<br><br>
+![9-createdish](./README_IMAGE/createdish.gif)
+
+- restaurant owner가 자신 소유의 restaurant안에서 새로운 메뉴를 등록하는 기능 구현
+- 사용예
+  (add-dish.tsx)
 
 <br><br>
 

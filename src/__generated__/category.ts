@@ -9,6 +9,22 @@ import { CategoryInput } from "./globalTypes";
 // GraphQL query operation: category
 // ====================================================
 
+export interface category_allCategories_categories {
+  __typename: "Category";
+  id: number;
+  name: string;
+  coverImg: string | null;
+  slug: string;
+  restaurantCount: number;
+}
+
+export interface category_allCategories {
+  __typename: "AllCategoriesOutput";
+  ok: boolean;
+  error: string | null;
+  categories: category_allCategories_categories[] | null;
+}
+
 export interface category_category_restaurants_category {
   __typename: "Category";
   name: string;
@@ -44,6 +60,7 @@ export interface category_category {
 }
 
 export interface category {
+  allCategories: category_allCategories;
   category: category_category;
 }
 

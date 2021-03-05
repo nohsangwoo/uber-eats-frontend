@@ -1,16 +1,16 @@
-import { gql, useMutation, useQuery, useSubscription } from "@apollo/client";
-import React, { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
-import { useParams } from "react-router-dom";
-import { FULL_ORDER_FRAGMENT } from "../fragments";
-import { useMe } from "../hooks/useMe";
-import { editOrder, editOrderVariables } from "../__generated__/editOrder";
-import { getOrder, getOrderVariables } from "../__generated__/getOrder";
-import { OrderStatus, UserRole } from "../__generated__/globalTypes";
+import { gql, useMutation, useQuery, useSubscription } from '@apollo/client';
+import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
+import { FULL_ORDER_FRAGMENT } from '../fragments';
+import { useMe } from '../hooks/useMe';
+import { editOrder, editOrderVariables } from '../__generated__/editOrder';
+import { getOrder, getOrderVariables } from '../__generated__/getOrder';
+import { OrderStatus, UserRole } from '../__generated__/globalTypes';
 import {
   orderUpdates,
   orderUpdatesVariables,
-} from "../__generated__/orderUpdates";
+} from '../__generated__/orderUpdates';
 
 const GET_ORDER = gql`
   query getOrder($input: GetOrderInput!) {
@@ -115,24 +115,24 @@ export const Order = () => {
         </h5>
         <div className="p-5 text-xl grid gap-6">
           <div className="border-t pt-5 border-gray-700">
-            Prepared By:{" "}
+            Prepared By:{' '}
             <span className="font-medium">
               {data?.getOrder.order?.restaurant?.name}
             </span>
           </div>
           <div className="border-t pt-5 border-gray-700 ">
-            Deliver To:{" "}
+            Deliver To:{' '}
             <span className="font-medium">
               {data?.getOrder.order?.customer?.email}
             </span>
           </div>
           <div className="border-t border-b py-5 border-gray-700">
-            Driver:{" "}
+            Driver:{' '}
             <span className="font-medium">
-              {data?.getOrder.order?.driver?.email || "Not yet."}
+              {data?.getOrder.order?.driver?.email || 'Not yet.'}
             </span>
           </div>
-          {userData?.me.role === "Client" && (
+          {userData?.me.role === 'Client' && (
             <span className=" text-center mt-5 mb-3  text-2xl text-lime-600">
               Status: {data?.getOrder.order?.status}
             </span>
@@ -185,7 +185,7 @@ export const Order = () => {
           )}
           {data?.getOrder.order?.status === OrderStatus.Delivered && (
             <span className=" text-center mt-5 mb-3  text-2xl text-lime-600">
-              Thank you for using Nuber Eats
+              Thank you for using Uber Eats
             </span>
           )}
         </div>

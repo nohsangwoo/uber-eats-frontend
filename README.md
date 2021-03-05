@@ -39,7 +39,7 @@
 # 주요 기능
 
 1. realtime 상호작용 (apollo subscription을 이용한 Websocket 접근)
-   <br>
+   <br><br><br>
    ![1-main-page](./README_IMAGE/main_function.gif)
 
    - Description

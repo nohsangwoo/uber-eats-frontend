@@ -178,6 +178,20 @@
 <hr>
 <br><br>
 
+## 7. 목적지까지 경로 안내(Owner)
+
+<br><br>
+![7-createRestaurant](./README_IMAGE/createRestaurant.gif)
+
+- restaurant owner가 자신 소유의 새로운 restaurant 생성하는 기능 구현
+- 사용예
+  (add-restaurants.tsx)
+
+<br><br>
+
+<hr>
+<br><br>
+
 # 개선해야할 부분
 
 1. 배달원의 위치 정보를 실시간으로 사용자와 레스토랑주인에게 공유하는 기능

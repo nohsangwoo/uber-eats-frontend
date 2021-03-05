@@ -3,7 +3,10 @@
 # Uber Eats Frontend
 - https://github.com/nohsangwoo/uber-eats-backend 와 연동됩니다(BackEnd)
 
-</div>
+<br><br>
+
+<hr>
+<br><br>
 
 # 구현 내용 및 컨셉
 
@@ -24,6 +27,11 @@
 |               |        ✔ Tailwind CSS         |
 |               |     ✔ JWT Authentication      |
 
+<br><br>
+
+<hr>
+<br><br>
+
 # 사용된 기술
 
 - React JS
@@ -35,6 +43,11 @@
 - Cypress(for E2E testing)
 - Jest(for unit testing)
 - websocket(for realtime subscription)
+
+<br><br>
+
+<hr>
+<br><br>
 
 # 주요 기능
 
@@ -69,7 +82,9 @@
 <hr>
 <br><br>
 
-## 2. pagination 기능(페이지당 3개내용)
+## 2. pagination 기능(User)
+
+(페이지당 3개내용)
 
 <br><br>
 ![2-pagenation](./README_IMAGE/pagination.gif)
@@ -85,7 +100,7 @@
 <hr>
 <br><br>
 
-## 3. category 검색 기능
+## 3. category 검색 기능(User)
 
 <br><br>
 ![3-category](./README_IMAGE/category.gif)
@@ -93,6 +108,21 @@
 - category 이미지를 클릭하면 해당 카테고리에 해당하는 restaurant를 검색해주는 기능 구현
 - 사용예
   (category.tsx)
+
+<br><br>
+
+<hr>
+<br><br>
+
+## 4. 검색어로 레스토랑이름 검색 기능(User)
+
+<br><br>
+![3-search](./README_IMAGE/search.gif)
+
+- category 이미지를 클릭하면 해당 카테고리에 해당하는 restaurant를 검색해주는 기능 구현
+- 없는 레스토랑 이름으로 검색시 안내 페이지 구현
+- 사용예
+  (search.tsx)
 
 <br><br>
 

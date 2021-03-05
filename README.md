@@ -221,6 +221,20 @@
 <hr>
 <br><br>
 
+## 10. 새로운 메뉴 등록(Owner)
+
+<br><br>
+![10-editdish](./README_IMAGE/editdish.gif)
+
+- restaurant owner가 자신 소유의 restaurant안에서 등록된 메뉴를 수정하는 기능 구현
+- 사용예
+  (edit-dish.tsx)
+
+<br><br>
+
+<hr>
+<br><br>
+
 # 개선해야할 부분
 
 1. 배달원의 위치 정보를 실시간으로 사용자와 레스토랑주인에게 공유하는 기능

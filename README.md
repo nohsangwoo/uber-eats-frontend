@@ -221,7 +221,7 @@
 <hr>
 <br><br>
 
-## 10. 새로운 메뉴 등록(Owner)
+## 10. 메뉴 수정(Owner)
 
 <br><br>
 ![10-editdish](./README_IMAGE/editdish.gif)

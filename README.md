@@ -260,13 +260,27 @@
 5. paddle의 이용방침이 변경돼서 테스트모드 불가, paypal로 변경
 6. logout기능
 
-# category 구현
+# 프로젝트를 진행하면서..
 
-페이지는 존재하나...아직 내용이 없음
+1. apollo graphql의 사용법을 보다 확실하게 숙달
+2. global state을 apollo-graphql의 reactive variables로 관리하는 방법을 숙지
+   (보다 가볍운 작업에선 대체가능할듯)
 
-# edit-dish 구현(owner권한)
+   - logger 적용방법
+     https://github.com/blackxored/apollo-link-logger
+     https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/apollo-link-logger
+   - persist 적용방법
+     https://www.apollographql.com/docs/react/caching/advanced-topics/#cache-persistence
+     https://stackoverflow.com/questions/59211666/how-to-use-localstorage-with-apollo-client-and-reactjs
 
-uuid 적용
+3. react-hook-form을 이용한 강력한 form제어방법을 습득
+4. google maps javascript api를 이용하여 각종 google map관련 내용을 습득
+5. tailwind css에 autoprefixer를 적용하여 벤더 프리픽스설정으로부터 자유로운 방법 습득
 
-<!-- ![2-description_page](./README_IMAGE/dudungdeungjang.png)
-![3-description_page](./README_IMAGE/customScrollBar.png) -->
+# 사용
+
+- npm run start
+
+# 사용 환경변수
+
+- GOOGLE MAP KEY

@@ -5,6 +5,7 @@ import { FULL_ORDER_FRAGMENT } from '../../fragments';
 import { coockedOrders } from '../../__generated__/coockedOrders';
 import { Link, useHistory } from 'react-router-dom';
 import { takeOrder, takeOrderVariables } from '../../__generated__/takeOrder';
+import { Helmet } from 'react-helmet-async';
 
 const COOCKED_ORDERS_SUBSCRIPTION = gql`
   subscription coockedOrders {
@@ -136,6 +137,9 @@ export const Dashboard = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Delivery | Uber Eats</title>
+      </Helmet>
       <div
         className="overflow-hidden"
         style={{ width: window.innerWidth, height: '50vh' }}
@@ -170,12 +174,12 @@ export const Dashboard = () => {
               }
               className="btn w-full  block  text-center mt-5"
             >
-              Accept Challenge &rarr;
+              Accept &rarr;
             </button>
           </>
         ) : (
           <h1 className="text-center  text-3xl font-medium">
-            No orders yet...
+            Pending orders ...
           </h1>
         )}
       </div>

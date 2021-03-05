@@ -1,5 +1,26 @@
 # Uber Eats Frontend
 
+# 구현 내용 및 컨셉
+
+|                        Users                        	|                Restaurants                	|
+|:---------------------------------------------------:	|:-----------------------------------------:	|
+| ✔ User Authentication                               	| ✔ Restaurant CRUD                         	|
+| ✔ Email Verification                                	| ✔ Dish CRUD                               	|
+| ✔ Photo Upload                                      	| ✔ Realtime Order<br>Notification          	|
+| ✔ User / Delivery Man/ <br>Restaurant Owner Profile 	| ✔ Premium Feature<br>(Online Payment)     	|
+|                                                     	| ✔ Sales Dashboard<br>(Data Visualization) 	|
+
+
+| Nest Concepts 	|            Feature            	|
+|:-------------:	|:-----------------------------:	|
+| ✔ Modules     	| ✔ Online Payments<br>(paddle) 	|
+| ✔ Guards      	| ✔ Google Maps                 	|
+| ✔ MiddleWares 	| ✔ Unit Testing                	|
+| ✔ Decorators  	| ✔ End to End Testing          	|
+|               	| ✔ Tailwind CSS                	|
+|               	| ✔ JWT Authentication          	|
+
+
 
 #
 

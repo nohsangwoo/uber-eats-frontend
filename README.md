@@ -1,10 +1,10 @@
 # Uber Eats Frontend
 
-<div align=center>
-  
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=nohsangwoo)](https://github.com/anuraghazra/github-readme-stats)
+<div align=center>  
+
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=nohsangwoo&show_icons=true&theme=radical)
 </div>
+
 #
 
 React JS, typescript(for javascript), apollographql(for graphql), google maps API(for map), victory(for graph), tailwind css(for css), Jest(for testing), websocket(for realtime subscription)

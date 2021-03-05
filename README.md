@@ -18,7 +18,7 @@
 
 <div>  
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=nohsangwoo&show_icons=true&theme=Gradient)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=nohsangwoo&show_icons=true&theme=dark)
 
 </div>
 

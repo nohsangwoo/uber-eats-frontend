@@ -29,9 +29,15 @@
 
 
 
-#
-
-React JS, typescript(for javascript), apollographql(for graphql), google maps API(for map), victory(for graph), tailwind css(for css), Jest(for testing), websocket(for realtime subscription)
+# 사용된 기술
+- React JS
+- typescript(for javascript)
+- apollographql(for graphql)
+- google maps API(for map)
+- victory(for graph)
+- tailwind css(for css)
+- Jest(for testing)
+- websocket(for realtime subscription)
 
 # 고도화 작업중
 

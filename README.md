@@ -299,7 +299,7 @@
 ## 15. paypal을 이용한 결제 기능(Owner) (gif파일 있음)
 
 <br><br>
-![15-ㅡpayment](./README_IMAGE/ㅡpayment.gif)
+![15-payment](./README_IMAGE/payment.gif)
 
 - 결제 기능 구현
 - paypal sandbox 사용

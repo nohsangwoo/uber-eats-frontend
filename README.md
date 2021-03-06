@@ -4,7 +4,7 @@
 - https://github.com/nohsangwoo/uber-eats-backend 와 연동됩니다(BackEnd)
 - deploy: https://uber-eats-clone-fe-noh.netlify.app/
     (백엔드배포된 서비스의 상태가 무료버전이라 처음 접속시 sleep된상태에서 깨어나느라 조금 시간이 걸림(1~2분정도 기다려야함))
-- 설명에 첨부된 gif파일 크기로 인하여 readme파일을 불러오는데 시간이 좀더 소요될 수 있습니다. 조금 기다려주세요.
+# 설명에 첨부된 gif파일 크기로 인하여 readme파일을 불러오는데 시간이 좀더 소요될 수 있습니다. 많이 기다려주세요.
 
 <br><br>
 
@@ -54,7 +54,7 @@
 
 # 주요 기능
 
-## 1. realtime 상호작용 (apollo subscription을 이용한 Websocket 접근)
+## 1. realtime 상호작용 (apollo subscription을 이용한 Websocket 접근) (gif파일 있음)
 
 <br><br>
 ![1-main-page](./README_IMAGE/main_function.gif)
@@ -102,7 +102,7 @@
 <hr>
 <br><br>
 
-## 2. pagination 기능(User)
+## 2. pagination 기능(User) (gif파일 있음)
 
 (페이지당 3개내용)
 
@@ -120,7 +120,7 @@
 <hr>
 <br><br>
 
-## 3. category 검색 기능(User)
+## 3. category 검색 기능(User) (gif파일 있음)
 
 <br><br>
 ![3-category](./README_IMAGE/category.gif)
@@ -134,7 +134,7 @@
 <hr>
 <br><br>
 
-## 4. 검색어로 레스토랑이름 검색 기능(User)
+## 4. 검색어로 레스토랑이름 검색 기능(User) (gif파일 있음)
 
 <br><br>
 ![4-search](./README_IMAGE/search.gif)
@@ -149,7 +149,7 @@
 <hr>
 <br><br>
 
-## 5. 내 정보 수정 기능(Any)
+## 5. 내 정보 수정 기능(Any) (gif파일 있음)
 
 <br><br>
 ![5-editprofile](./README_IMAGE/editprofile.gif)
@@ -164,7 +164,7 @@
 <hr>
 <br><br>
 
-## 6. 목적지까지 경로 안내(Delivery)
+## 6. 목적지까지 경로 안내(Delivery) (gif파일 있음)
 
 <br><br>
 ![6-makeroute](./README_IMAGE/makeroute.gif)
@@ -178,7 +178,7 @@
 <hr>
 <br><br>
 
-## 7. 새로운 레스토랑 등록(Owner)
+## 7. 새로운 레스토랑 등록(Owner) (gif파일 있음)
 
 <br><br>
 ![7-createRestaurant](./README_IMAGE/createRestaurant.gif)
@@ -192,7 +192,7 @@
 <hr>
 <br><br>
 
-## 8. 새로운 카테고리 등록(Owner)
+## 8. 새로운 카테고리 등록(Owner) (gif파일 있음)
 
 <br><br>
 ![8-createcategory](./README_IMAGE/createcategory.gif)
@@ -207,7 +207,7 @@
 <hr>
 <br><br>
 
-## 9. 새로운 메뉴 등록(Owner)
+## 9. 새로운 메뉴 등록(Owner) (gif파일 있음)
 
 <br><br>
 ![9-createdish](./README_IMAGE/createdish.gif)
@@ -221,7 +221,7 @@
 <hr>
 <br><br>
 
-## 10. 메뉴 수정(Owner)
+## 10. 메뉴 수정(Owner) (gif파일 있음)
 
 <br><br>
 ![10-editdish](./README_IMAGE/editdish.gif)
@@ -235,7 +235,7 @@
 <hr>
 <br><br>
 
-## 11. 실시간 주문 현황 그래프(Owner)
+## 11. 실시간 주문 현황 그래프(Owner) (gif파일 있음)
 
 <br><br>
 ![11-victory](./README_IMAGE/victory.gif)
@@ -249,7 +249,7 @@
 <hr>
 <br><br>
 
-## 12. cypress를 이용한 E2E testing
+## 12. cypress를 이용한 E2E testing (gif파일 있음)
 
 <br><br>
 ![12-cypress](./README_IMAGE/cypress.gif)
@@ -262,7 +262,7 @@
 <hr>
 <br><br>
 
-## 13. 회원가입 기능
+## 13. 회원가입 기능 (gif파일 있음)
 
 <br><br>
 ![13-createaccount](./README_IMAGE/createaccount.gif)
@@ -275,7 +275,7 @@
 <hr>
 <br><br>
 
-## 14. 이메일 인증(회원가입 후 최초 또는 개인정보 수정시)
+## 14. 이메일 인증(회원가입 후 최초 또는 개인정보 수정시) (png파일 있음)
 
 - sandbox버젼이라 인증 이메일 보낼때마다 mailgun에 수동으로 등록해야함
   또는 카드 등록후 무제한으로 사용하면됨(하지만 현재 불가)
@@ -290,6 +290,23 @@
 - 회원가입후 인증번호 확인 시스템을 구현
 - 해당 인증번호는 사용자의 이메일로 링크를 보낸 후 사용자가 해당 링크로 접속하면 인증완료
 - (confirm-email.tsx)참고
+
+<br><br>
+
+<hr>
+<br><br>
+
+## 15. paypal을 이용한 결제 기능(Owner) (gif파일 있음)
+
+<br><br>
+![15-ㅡpayment](./README_IMAGE/ㅡpayment.gif)
+
+- 결제 기능 구현
+- paypal sandbox 사용
+- buy promotion을 클릭하면 결제페이지로 넘어간다
+- 이후 샌드박스 테스트용 계정으로 결제 완료 후 확인작업
+- database user테이블 확인 및 sandboxpaypal 잔고확인
+- 회원가입후 pgadmin에서 user table query 조회로 새로운 user생성 확인
 
 <br><br>
 

@@ -38,7 +38,6 @@ function Payment() {
   >(CREATE_PAYMENT_MUTATION, {
     onCompleted,
   });
-  const { data: userData } = useMe();
 
   // paypal 결제 성공시 동작
   const successFunction = useCallback(async (details, data) => {
@@ -59,40 +58,19 @@ function Payment() {
     return;
   }, []);
 
-  const triggerPaypal = () => {
-    if (userData?.me.email) {
-      // @ts-ignore
-      window.Paddle.Setup({ vendor: 31465 });
-      // @ts-ignore
-      window.Paddle.Checkout.open({
-        product: 638793,
-        email: userData.me.email,
-        successCallback: (data: any) => {
-          createPaymentMutation({
-            variables: {
-              input: {
-                transactionId: data.checkout.id,
-                restaurantId: +restaurantId,
-              },
-            },
-          });
-        },
-      });
-    }
-  };
-
   // 결제
 
   const promotionPrice = 10;
 
   return (
-    <div>
+    <div className="container flex flex-col items-center mt-52">
       <Helmet>
         <title>Buy Promotion | Uber Eats</title>
       </Helmet>
-      <div className="flex flex-col text-center border-black border-2 mt-32 p-16">
-        <div>Buy Promotion</div>
-        <div>${`${promotionPrice}`}</div>
+      <div className="grid max-w-screen-sm gap-3 mt-5 w-full mb-5">
+        <h4 className="font-semibold text-2xl mb-3">
+          Buy Promotion: ${`${promotionPrice}`}
+        </h4>
         <PayPal amount={promotionPrice} successFunction={successFunction} />
       </div>
       <ToastContainer />

@@ -84,7 +84,7 @@
   https://www.apollographql.com/docs/react/data/subscriptions/#setting-up-the-transport 참고
 
 - subscription 사용예
-  (dashboard.tsx)
+  (pages/driver/dashboard.tsx)
 
 - subscribeToMore
   subscriptoion은 변화가 있을때만 감지된 데이터를 가져와 알려줌
@@ -113,7 +113,7 @@
   DB에 저장된 레스토랑의 총 개수/3(페이지당 restaurant표시 개수)로 계산된 backend graphql기능
 - pagination은 프론트에선 쿼리로 페이지와 함께 요청만하기 실질적인 기능 구현은 백엔드에서 담당함(graphql)
 - pagination 사용예
-  (category.tsx)
+  (pages/client/category.tsx)
 
 <br><br>
 
@@ -127,7 +127,7 @@
 
 - category 이미지를 클릭하면 해당 카테고리에 해당하는 restaurant를 검색해주는 기능 구현
 - 사용예
-  (category.tsx)
+  (pages/client/category.tsx)
 
 <br><br>
 
@@ -142,7 +142,7 @@
 - category 이미지를 클릭하면 해당 카테고리에 해당하는 restaurant를 검색해주는 기능 구현
 - 없는 레스토랑 이름으로 검색시 안내 페이지 구현
 - 사용예
-  (search.tsx)
+  (pages/client/search.tsx)
 
 <br><br>
 
@@ -157,7 +157,7 @@
 - email과 password를 수정하는 기능 구현
 - 수정완료시 "Please enter a valid email" 안내문과 함께 email인증을 해야함
 - 사용예
-  (edit-profile.tsx)
+  (pages/user/edit-profile.tsx)
 
 <br><br>
 
@@ -171,7 +171,7 @@
 
 - Google maps Api를 이용하여 임의로 지정된 목적지까지 경로를 안내받는 기능 구현
 - 사용예
-  (dashboard.tsx)
+  (pages/driver/dashboard.tsx)
 
 <br><br>
 
@@ -185,7 +185,7 @@
 
 - restaurant owner가 자신 소유의 새로운 restaurant을 생성하는 기능 구현
 - 사용예
-  (add-restaurants.tsx)
+  (pages/owner/add-restaurants.tsx)
 
 <br><br>
 
@@ -200,7 +200,7 @@
 - restaurant owner가 새로운 category를 생성하는 기능 구현
 - 생성후 사용자(user)화면에서 새로고침하면 맨 우측에 추가한 healthy카테고리 생성 확인완료
 - 사용예
-  (add-category.tsx)
+  (pages/owner/add-category.tsx)
 
 <br><br>
 
@@ -214,7 +214,7 @@
 
 - restaurant owner가 자신 소유의 restaurant안에서 새로운 메뉴를 등록하는 기능 구현
 - 사용예
-  (add-dish.tsx)
+  (pages/owner/add-dish.tsx)
 
 <br><br>
 
@@ -228,7 +228,7 @@
 
 - restaurant owner가 자신 소유의 restaurant안에서 등록된 메뉴를 수정하는 기능 구현
 - 사용예
-  (edit-dish.tsx)
+  (pages/owner/edit-dish.tsx)
 
 <br><br>
 
@@ -242,7 +242,7 @@
 
 - victory를 이용하여 주문의 매출을 그래프로 렌더링해서 restaurant owner가 확인 가능하게 구현
 - 사용예
-  (my-restaurant.tsx)
+  (pages/owner/my-restaurant.tsx)
 
 <br><br>
 
@@ -289,7 +289,7 @@
   https://www.mailgun.com/ 참고
 - 회원가입후 인증번호 확인 시스템을 구현
 - 해당 인증번호는 사용자의 이메일로 링크를 보낸 후 사용자가 해당 링크로 접속하면 인증완료
-- (confirm-email.tsx)참고
+- (pages/user/confirm-email.tsx)참고
 
 <br><br>
 
@@ -307,6 +307,7 @@
 - 이후 샌드박스 테스트용 계정으로 결제 완료 후 확인작업
 - database user테이블 확인 및 sandboxpaypal 잔고확인
 - 회원가입후 pgadmin에서 user table query 조회로 새로운 user생성 확인
+- (pages/components/paypal.tsx)참고
 
 <br><br>
 

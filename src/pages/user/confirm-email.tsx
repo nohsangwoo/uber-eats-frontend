@@ -48,6 +48,7 @@ export const ConfirmEmail = () => {
   );
   useEffect(() => {
     const [_, code] = window.location.href.split('code=');
+    console.log('작도오오');
     verifyEmail({
       variables: {
         input: {

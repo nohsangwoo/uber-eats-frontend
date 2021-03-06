@@ -1,7 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 import { Restaurant } from '../../components/restaurant';
 import { RESTAURANT_FRAGMENT } from '../../fragments';
 import { myRestaurants } from '../../__generated__/myRestaurants';
@@ -21,6 +22,7 @@ export const MY_RESTAURANTS_QUERY = gql`
 
 export const MyRestaurants = () => {
   const { data } = useQuery<myRestaurants>(MY_RESTAURANTS_QUERY);
+
   const CONSTANTS = {
     RESTAURANT: 'RESTAURANT',
     CATEGORIES: 'CATEGORIES',
@@ -34,6 +36,7 @@ export const MyRestaurants = () => {
       history.push('/add-category');
     }
   };
+
   return (
     <div>
       <Helmet>
@@ -48,7 +51,30 @@ export const MyRestaurants = () => {
         data.myRestaurants.restaurants.length === 0 ? (
           <>
             <h4 className="text-xl mb-5">You have no restaurants</h4>
-            <div>Create one &rarr;</div>
+            <div className="flex flex-row justify-around ">
+              <div
+                onClick={() => {
+                  moveRoute(CONSTANTS.RESTAURANT);
+                }}
+                className="transition-all w-full text-xl mb-5 cursor-pointer hover:border-black border-2 p-3"
+              >
+                <h4 className="">Create more restaurants</h4>
+                <div className="text-lime-600 hover:underline">
+                  Create one &rarr;
+                </div>
+              </div>
+              <div
+                onClick={() => {
+                  moveRoute(CONSTANTS.CATEGORIES);
+                }}
+                className="transition-all w-full text-xl mb-5 cursor-pointer hover:border-black border-2 p-3"
+              >
+                <h4 className="">Create more categories</h4>
+                <div className="text-lime-600 hover:underline">
+                  Create one &rarr;
+                </div>
+              </div>
+            </div>
           </>
         ) : (
           <>

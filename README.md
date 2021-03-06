@@ -275,6 +275,27 @@
 <hr>
 <br><br>
 
+## 14. 이메일 인증(회원가입 후 최초 또는 개인정보 수정시)
+
+- sandbox버젼이라 인증 이메일 보낼때마다 mailgun에 수동으로 등록해야함
+  또는 카드 등록후 무제한으로 사용하면됨(하지만 현재 불가)
+
+<br><br>
+![14-verifyemail](./README_IMAGE/verifyemail.png)
+![14-mailgunlog](./README_IMAGE/mailgunlog.png)
+
+- 인증확인 메일 확인 및 mailgun log 확인 스크린샷
+- email 서비스는 mailgun을 사용
+  https://www.mailgun.com/ 참고
+- 회원가입후 인증번호 확인 시스템을 구현
+- 해당 인증번호는 사용자의 이메일로 링크를 보낸 후 사용자가 해당 링크로 접속하면 인증완료
+- (confirm-email.tsx)참고
+
+<br><br>
+
+<hr>
+<br><br>
+
 # 개선해야할 부분
 
 1. 배달원의 위치 정보를 실시간으로 사용자와 레스토랑주인에게 공유하는 기능

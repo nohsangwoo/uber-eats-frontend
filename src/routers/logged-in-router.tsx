@@ -18,7 +18,7 @@ import { Dashboard } from '../pages/driver/dashboard';
 import { UserRole } from '../__generated__/globalTypes';
 import AddCategory from '../pages/owner/add-category';
 import EditDish from '../pages/owner/edit-dish';
-
+import Payment from '../pages/user/payment';
 const clientRoutes = [
   {
     path: '/',
@@ -51,6 +51,7 @@ const restaurantRoutes = [
   { path: '/restaurants/:restaurantId/add-dish', component: <AddDish /> },
   { path: '/add-category', component: <AddCategory /> },
   { path: '/edit-dish/:dishId', component: <EditDish /> },
+  { path: '/payment/:restaurantId', component: <Payment /> },
 ];
 
 const driverRoutes = [{ path: '/', component: <Dashboard /> }];

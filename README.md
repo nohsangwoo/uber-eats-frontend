@@ -317,7 +317,7 @@
 ## 16. 404page (png파일 있음)
 
 <br><br>
-![16-404page](./README_IMAGE/404page.gif)
+![16-404page](./README_IMAGE/404page.png)
 
 - 404page 구현
 

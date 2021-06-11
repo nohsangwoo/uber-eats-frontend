@@ -1,5 +1,3 @@
-<div>
-  
 # Uber Eats Frontend
 - https://github.com/nohsangwoo/uber-eats-backend 와 연동됩니다(BackEnd)
 - deploy: https://uber-eats-clone-fe-noh.netlify.app/
